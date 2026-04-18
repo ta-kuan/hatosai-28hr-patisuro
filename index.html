@@ -1,1 +1,325 @@
-
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google" content="notranslate">
+    <title>パチスロ - 28HR</title>
+    <style>
+      body {
+        touch-action: manipulation;
+      }
+      .box {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        perspective: 1000px;
+      }
+      .a,
+      .b,
+      .c,
+      .d,
+      .e,
+      .f {
+        background: rgb(255,200,200);
+      }
+      .a::after {
+        content: "1";
+        font-size: 250%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .b::after {
+        content: "2";
+        font-size: 250%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .c::after {
+        content: "3";
+        font-size: 250%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .d::after {
+        content: "4";
+        font-size: 250%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .e::after {
+        content: "5";
+        font-size: 250%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .f::after {
+        content: "6";
+        font-size: 250%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      .LL {
+        left: 0;
+      }
+      .CC { 
+        left: 70px;
+      }
+      .RR {
+        left: 140px;
+      }
+      @keyframes move {
+        0% {
+          transform: matrix3d(
+            1, 0, 0, 0,
+            0, 0, -1, 0,
+            0, 1, 0, 0,
+            0, 0, 0, 1
+          );
+          top: 0;
+        }
+        100% {
+          transform: matrix3d(
+            1, 0, 0, 0,
+            0, 0, 1, 0,
+            0, -1, 0, 0,
+            0, 0, 0, 1
+          );
+          top: 400px;
+        }
+      }
+      .a.next {
+        animation: move 0.6s cubic-bezier(0.5, 0, 0.5, 1) 0s infinite;
+      }
+      .b.next {
+        animation: move 0.6s cubic-bezier(0.5, 0, 0.5, 1) 0.1s infinite;
+      }
+      .c.next {
+        animation: move 0.6s cubic-bezier(0.5, 0, 0.5, 1) 0.2s infinite;
+      }
+      .d.next {
+        animation: move 0.6s cubic-bezier(0.5, 0, 0.5, 1) 0.3s infinite;
+      }
+      .e.next {
+        animation: move 0.6s cubic-bezier(0.5, 0, 0.5, 1) 0.4s infinite;
+      }
+      .f.next {
+        animation: move 0.6s cubic-bezier(0.5, 0, 0.5, 1) 0.5s infinite;
+      }
+      .result {
+        position: absolute;
+        left: 150px;
+        top: 460px;
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box a l1 LL"></div>
+    <div class="box b l2 LL"></div>
+    <div class="box c l3 LL"></div>
+    <div class="box d l4 LL"></div>
+    <div class="box e l5 LL"></div>
+    <div class="box f l6 LL"></div>
+    <div class="box a c1 CC"></div>
+    <div class="box b c2 CC"></div>
+    <div class="box c c3 CC"></div>
+    <div class="box d c4 CC"></div>
+    <div class="box e c5 CC"></div>
+    <div class="box f c6 CC"></div>
+    <div class="box a r1 RR"></div>
+    <div class="box b r2 RR"></div>
+    <div class="box c r3 RR"></div>
+    <div class="box d r4 RR"></div>
+    <div class="box e r5 RR"></div>
+    <div class="box f r6 RR"></div>
+    <span class="result"></span>
+    <script>
+      const box = document.querySelector(".box");
+      const l1 = document.querySelector(".l1");
+      const l2 = document.querySelector(".l2");
+      const l3 = document.querySelector(".l3");
+      const l4 = document.querySelector(".l4");
+      const l5 = document.querySelector(".l5");
+      const l6 = document.querySelector(".l6");
+      const c1 = document.querySelector(".c1");
+      const c2 = document.querySelector(".c2");
+      const c3 = document.querySelector(".c3");
+      const c4 = document.querySelector(".c4");
+      const c5 = document.querySelector(".c5");
+      const c6 = document.querySelector(".c6");
+      const r1 = document.querySelector(".r1");
+      const r2 = document.querySelector(".r2");
+      const r3 = document.querySelector(".r3");
+      const r4 = document.querySelector(".r4");
+      const r5 = document.querySelector(".r5");
+      const r6 = document.querySelector(".r6");
+      const bt = document.querySelector(".bt");
+      let lr = 0;
+      let lm = 0;
+      let cr = 0;
+      let cm = 0;
+      let rr = 0;
+      let rm = 0;
+      let l_time = 0;
+      window.onkeydown = (e) => {
+        if (e.code === "Space") {
+          if (!l1.classList.contains("next")) {
+            document.querySelectorAll(".a").forEach(el => {
+              el.classList.add("next");
+            });
+            document.querySelectorAll(".b").forEach(el => {
+              el.classList.add("next");
+            });
+            document.querySelectorAll(".c").forEach(el => {
+              el.classList.add("next");
+            });
+            document.querySelectorAll(".d").forEach(el => {
+              el.classList.add("next");
+            });
+            document.querySelectorAll(".e").forEach(el => {
+              el.classList.add("next");
+            });
+            document.querySelectorAll(".f").forEach(el => {
+              el.classList.add("next");
+            });
+          }
+          lm = 0;
+          cm = 0;
+          rm = 0;
+          document.querySelector(".result").textContent = "";
+          const l1_ani = l1.getAnimations()[0];
+          const l2_ani = l2.getAnimations()[0];
+          const l3_ani = l3.getAnimations()[0];
+          const l4_ani = l4.getAnimations()[0];
+          const l5_ani = l5.getAnimations()[0];
+          const l6_ani = l6.getAnimations()[0];
+          const c1_ani = c1.getAnimations()[0];
+          const c2_ani = c2.getAnimations()[0];
+          const c3_ani = c3.getAnimations()[0];
+          const c4_ani = c4.getAnimations()[0];
+          const c5_ani = c5.getAnimations()[0];
+          const c6_ani = c6.getAnimations()[0];
+          const r1_ani = r1.getAnimations()[0];
+          const r2_ani = r2.getAnimations()[0];
+          const r3_ani = r3.getAnimations()[0];
+          const r4_ani = r4.getAnimations()[0];
+          const r5_ani = r5.getAnimations()[0];
+          const r6_ani = r6.getAnimations()[0];
+          const l_anis = [l1_ani, l2_ani, l3_ani, l4_ani, l5_ani, l6_ani];
+          const c_anis = [c1_ani, c2_ani, c3_ani, c4_ani, c5_ani, c6_ani];
+          const r_anis = [r1_ani, r2_ani, r3_ani, r4_ani, r5_ani, r6_ani];
+          l_anis.forEach(a => a.play());
+          c_anis.forEach(a => a.play());
+          r_anis.forEach(a => a.play());
+        } else if (e.key === "a") {
+          lm = 1;
+          const l1_ani = l1.getAnimations()[0];
+          const l2_ani = l2.getAnimations()[0];
+          const l3_ani = l3.getAnimations()[0];
+          const l4_ani = l4.getAnimations()[0];
+          const l5_ani = l5.getAnimations()[0];
+          const l6_ani = l6.getAnimations()[0];
+          const l_anis = [l1_ani, l2_ani, l3_ani, l4_ani, l5_ani, l6_ani];
+          l_time = l1_ani.currentTime % 600;
+          l_anis.forEach(a => a.pause());
+          if (l_time > 20 && l_time <= 120) {
+            l_anis.forEach(a => a.currentTime = 700);
+            lr = 5;
+          } else if (l_time > 120 && l_time <= 220) {
+            l_anis.forEach(a => a.currentTime = 800);
+            lr = 6;
+          } else if (l_time > 220 && l_time <= 320) {
+            l_anis.forEach(a => a.currentTime = 900);
+            lr = 1;
+          } else if (l_time > 320 && l_time <= 420) {
+            l_anis.forEach(a => a.currentTime = 1000);
+            lr = 2;
+          } else if (l_time > 420 && l_time <= 520) {
+            l_anis.forEach(a => a.currentTime = 1100);
+            lr = 3;
+          } else if ((l_time > 520 && l_time <= 600) || (l_time >= 0 && l_time <= 20)) {
+            l_anis.forEach(a => a.currentTime = 1200);
+            lr = 4;
+          }
+          if (lm === 1 && cm === 1 && rm === 1) document.querySelector(".result").textContent = `${lr}${cr}${rr}`;
+        } else if (e.key === "s") {
+          let c_time = 0;
+          cm = 1;
+          const c1_ani = c1.getAnimations()[0];
+          const c2_ani = c2.getAnimations()[0];
+          const c3_ani = c3.getAnimations()[0];
+          const c4_ani = c4.getAnimations()[0];
+          const c5_ani = c5.getAnimations()[0];
+          const c6_ani = c6.getAnimations()[0];
+          const c_anis = [c1_ani, c2_ani, c3_ani, c4_ani, c5_ani, c6_ani];
+          c_time = c1_ani.currentTime % 600;
+          c_anis.forEach(a => a.pause());
+          if (c_time > 20 && c_time <= 120) {
+            c_anis.forEach(a => a.currentTime = 700);
+            cr = 5;
+          } else if (c_time > 120 && c_time <= 220) {
+            c_anis.forEach(a => a.currentTime = 800);
+            cr = 6;
+          } else if (c_time > 220 && c_time <= 320) {
+            c_anis.forEach(a => a.currentTime = 900);
+            cr = 1;
+          } else if (c_time > 320 && c_time <= 420) {
+            c_anis.forEach(a => a.currentTime = 1000);
+            cr = 2;
+          } else if (c_time > 420 && c_time <= 520) {
+            c_anis.forEach(a => a.currentTime = 1100);
+            cr = 3;
+          } else if ((c_time > 520 && c_time <= 600) || (c_time >= 0 && c_time <= 20)) {
+            c_anis.forEach(a => a.currentTime = 1200);
+            cr = 4;
+          }
+          if (lm === 1 && cm === 1 && rm === 1) document.querySelector(".result").textContent = `${lr}${cr}${rr}`;
+        } else if (e.key === "d") {
+          let r_time = 0;
+          rm = 1;
+          const r1_ani = r1.getAnimations()[0];
+          const r2_ani = r2.getAnimations()[0];
+          const r3_ani = r3.getAnimations()[0];
+          const r4_ani = r4.getAnimations()[0];
+          const r5_ani = r5.getAnimations()[0];
+          const r6_ani = r6.getAnimations()[0];
+          const r_anis = [r1_ani, r2_ani, r3_ani, r4_ani, r5_ani, r6_ani];
+          r_time = r1_ani.currentTime % 600;
+          r_anis.forEach(a => a.pause());
+          if (r_time > 20 && r_time <= 120) {
+            r_anis.forEach(a => a.currentTime = 700);
+            rr = 5;
+          } else if (r_time > 120 && r_time <= 220) {
+            r_anis.forEach(a => a.currentTime = 800);
+            rr = 6;
+          } else if (r_time > 220 && r_time <= 320) {
+            r_anis.forEach(a => a.currentTime = 900);
+            rr = 1;
+          } else if (r_time > 320 && r_time <= 420) {
+            r_anis.forEach(a => a.currentTime = 1000);
+            rr = 2;
+          } else if (r_time > 420 && r_time <= 520) {
+            r_anis.forEach(a => a.currentTime = 1100);
+            rr = 3;
+          } else if ((r_time > 520 && r_time <= 600) || (r_time >= 0 && r_time <= 20)) {
+            r_anis.forEach(a => a.currentTime = 1200);
+            rr = 4;
+          }
+          if (lm === 1 && cm === 1 && rm === 1) document.querySelector(".result").textContent = `${lr}${cr}${rr}`;
+        }
+      });
+    </script>
+  </body>
+</html>
