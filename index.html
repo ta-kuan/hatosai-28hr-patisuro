@@ -179,7 +179,7 @@
       let ramr = 0;
       window.onkeydown = (e) => {
         if (e.code === "Space") {
-          if (!l1.classList.contains("next")) {
+          if (lm === 0 && cm === 0 && rm === 0) {
             document.querySelectorAll(".a").forEach(el => {
               el.classList.add("next");
             });
