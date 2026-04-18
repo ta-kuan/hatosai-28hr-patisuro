@@ -174,7 +174,9 @@
       let rr = 0;
       let rm = 0;
       let l_time = 0;
-      let ram = 0;
+      let raml = 0;
+      let ramc = 0;
+      let ramr = 0;
       window.onkeydown = (e) => {
         if (e.code === "Space") {
           if (!l1.classList.contains("next")) {
@@ -222,10 +224,12 @@
           const l_anis = [l1_ani, l2_ani, l3_ani, l4_ani, l5_ani, l6_ani];
           const c_anis = [c1_ani, c2_ani, c3_ani, c4_ani, c5_ani, c6_ani];
           const r_anis = [r1_ani, r2_ani, r3_ani, r4_ani, r5_ani, r6_ani];
-          ram = Math.floor(Math.random() * 601 + 600);
-          l_anis.forEach(a => a.currentTime = ram);
-          c_anis.forEach(a => a.currentTime = ram);
-          r_anis.forEach(a => a.currentTime = ram);
+          raml = Math.floor(Math.random() * 601 + 600);
+          ramc = Math.floor(Math.random() * 601 + 600);
+          ramr = Math.floor(Math.random() * 601 + 600);
+          l_anis.forEach(a => a.currentTime = raml);
+          c_anis.forEach(a => a.currentTime = ramc);
+          r_anis.forEach(a => a.currentTime = ramr);
           l_anis.forEach(a => a.play());
           c_anis.forEach(a => a.play());
           r_anis.forEach(a => a.play());
