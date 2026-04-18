@@ -330,6 +330,9 @@
           if (lm === 1 && cm === 1 && rm === 1) document.querySelector(".result").textContent = `${lr}${cr}${rr}`;
         }
       };
+      window.dispatchEvent(new KeyboardEvent('keydown', { key: "a" }));
+      window.dispatchEvent(new KeyboardEvent('keydown', { key: "s" }));
+      window.dispatchEvent(new KeyboardEvent('keydown', { key: "d" }));
     </script>
   </body>
 </html>
