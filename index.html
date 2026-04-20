@@ -112,11 +112,11 @@
       const r6 = document.querySelector(".r6");
       const bt = document.querySelector(".bt");
       let lr = 0;
-      let lm = 0;
+      let lm = 1;
       let cr = 0;
-      let cm = 0;
+      let cm = 1;
       let rr = 0;
-      let rm = 0;
+      let rm = 1;
       let l_time = 0;
       let raml = 0;
       let ramc = 0;
@@ -124,7 +124,7 @@
       let spacem = 1;
       window.onkeydown = (e) => {
         if (e.code === "Space") {
-          if (lm === 0 && cm === 0 && rm === 0 && spacem === 1) {
+          if (lm === 1 && cm === 1 && rm === 1 && spacem === 1) {
             document.querySelectorAll(".a").forEach(el => {
               el.classList.add("next");
             });
