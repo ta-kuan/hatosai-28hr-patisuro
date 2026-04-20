@@ -121,9 +121,10 @@
       let raml = 0;
       let ramc = 0;
       let ramr = 0;
+      let spacem = 0;
       window.onkeydown = (e) => {
         if (e.code === "Space") {
-          if (lm === 0 && cm === 0 && rm === 0) {
+          if (lm === 0 && cm === 0 && rm === 0 && spacem === 1) {
             document.querySelectorAll(".a").forEach(el => {
               el.classList.add("next");
             });
@@ -207,7 +208,10 @@
             l_anis.forEach(a => a.currentTime = 1200);
             lr = 4;
           }
-          if (lm === 1 && cm === 1 && rm === 1) document.querySelector(".result").textContent = `${lr}${cr}${rr}`;
+          if (lm === 1 && cm === 1 && rm === 1) {
+            document.querySelector(".result").textContent = `${lr}${cr}${rr}`;
+            spacem = 1;
+          }
         } else if (e.key === "s") {
           let c_time = 0;
           cm = 1;
@@ -239,7 +243,10 @@
             c_anis.forEach(a => a.currentTime = 1200);
             cr = 4;
           }
-          if (lm === 1 && cm === 1 && rm === 1) document.querySelector(".result").textContent = `${lr}${cr}${rr}`;
+          if (lm === 1 && cm === 1 && rm === 1) {
+            document.querySelector(".result").textContent = `${lr}${cr}${rr}`;
+            spacem = 1;
+          }
         } else if (e.key === "d") {
           let r_time = 0;
           rm = 1;
@@ -271,7 +278,10 @@
             r_anis.forEach(a => a.currentTime = 1200);
             rr = 4;
           }
-          if (lm === 1 && cm === 1 && rm === 1) document.querySelector(".result").textContent = `${lr}${cr}${rr}`;
+          if (lm === 1 && cm === 1 && rm === 1) {
+            document.querySelector(".result").textContent = `${lr}${cr}${rr}`;
+            spacem = 1;
+          }
         }
       };
       window.dispatchEvent(new KeyboardEvent('keydown', { code: "Space" }));
