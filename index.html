@@ -121,7 +121,7 @@
       let raml = 0;
       let ramc = 0;
       let ramr = 0;
-      let spacem = 0;
+      let spacem = 1;
       window.onkeydown = (e) => {
         if (e.code === "Space") {
           if (lm === 0 && cm === 0 && rm === 0 && spacem === 1) {
@@ -177,6 +177,7 @@
             l_anis.forEach(a => a.play());
             c_anis.forEach(a => a.play());
             r_anis.forEach(a => a.play());
+            spacem = 0;
           }
         } else if (e.key === "a") {
           lm = 1;
