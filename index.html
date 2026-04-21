@@ -245,7 +245,6 @@
             lm = 0;
             cm = 0;
             rm = 0;
-            document.querySelector(".result").textContent = "";
             const l1_ani = l1.getAnimations()[0];
             const l2_ani = l2.getAnimations()[0];
             const l3_ani = l3.getAnimations()[0];
@@ -277,6 +276,9 @@
             c_anis.forEach(a => a.play());
             r_anis.forEach(a => a.play());
             spacem = 0;
+            document.querySelector(".suclc").classList.add("off");
+            document.querySelector(".succc").classList.add("off");
+            document.querySelector(".sucrc").classList.add("off");
           }
         } else if (e.key === "a") {
           lm = 1;
