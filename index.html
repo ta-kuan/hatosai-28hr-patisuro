@@ -28,7 +28,7 @@
         position: absolute;
         width: 25vw;
         height: 100vh;
-        z-index: -1;
+        z-index: -2;
         background: linear-gradient(0deg, rgb(100,100,100) 0%, rgb(200,200,200) 15%, rgb(200,200,200) 85%, rgb(100,100,100) 100%);
       }
       .backl {
@@ -39,6 +39,36 @@
       }
       .backr {
         left: 67.75vw;
+      }
+      .suclt,
+      .succt,
+      .sucrt {
+        position: absolute;
+        width: 16vw;
+        height: 16vw;
+        background: rgb(220,220,190);
+        z-index: -1;
+        top: 15vh;
+      }
+      .suclb,
+      .succb,
+      .sucrb {
+        position: absolute;
+        width: 16vw;
+        height: 16vw;
+        background: rgb(220,220,190);
+        z-index: -1;
+        top: 50vh;
+      }
+      .suclc,
+      .succc,
+      .sucrc {
+        position: absolute;
+        width: 20vw;
+        height: 20vw;
+        background: rgb(220,220,190);
+        z-index: -1;
+        bottom: 15vh;
       }
       .box {
         width: 20vw;
@@ -122,9 +152,22 @@
         <img src="srottyeri.png" class="box e r5 RR">
         <img src="srot28.png" class="box f r6 RR">
       </div>
-      <div class="backl"></div>
-      <div class="backc"></div>
-      <div class="backr"></div>
+      <div>
+        <div class="backl"></div>
+        <div class="backc"></div>
+        <div class="backr"></div>
+      </div>
+      <div>
+        <div class="suclt"></div>
+        <div class="suclc"></div>
+        <div class="suclb"></div>
+        <div class="succt"></div>
+        <div class="succc"></div>
+        <div class="succb"></div>
+        <div class="sucrt"></div>
+        <div class="sucrc"></div>
+        <div class="sucrb"></div>
+      </div>
     </div>
     <span class="result"></span>
     <script>
