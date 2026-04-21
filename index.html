@@ -224,9 +224,6 @@
       window.onkeydown = (e) => {
         if (e.code === "Space") {
           if (lm === 1 && cm === 1 && rm === 1 && spacem === 1) {
-            document.querySelector(".suclc").classList.add("off");
-            document.querySelector(".succc").classList.add("off");
-            document.querySelector(".sucrc").classList.add("off");
             document.querySelectorAll(".a").forEach(el => {
               el.classList.add("next");
             });
