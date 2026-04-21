@@ -203,11 +203,11 @@
       const r5 = document.querySelector(".r5");
       const r6 = document.querySelector(".r6");
       const bt = document.querySelector(".bt");
-      let lr = 0;
+      let lr = [0,0,0];
       let lm = 1;
-      let cr = 0;
+      let cr = [0,0,0];
       let cm = 1;
-      let rr = 0;
+      let rr = [0,0,0];
       let rm = 1;
       let l_time = 0;
       let raml = 0;
@@ -215,7 +215,7 @@
       let ramr = 0;
       let spacem = 1;
       function checkc() {
-        if (lr === cr && cr === rr && lr >= 1 && lr <= 6) {
+        if (lr[1] === cr[1] && cr[1] === rr[1] && lr[1] >= 1 && lr[1] <= 6) {
           document.querySelector(".suclc").classList.remove("off");
           document.querySelector(".succc").classList.remove("off");
           document.querySelector(".sucrc").classList.remove("off");
@@ -293,22 +293,22 @@
           l_anis.forEach(a => a.pause());
           if (l_time > 40 && l_time <= 140) {
             l_anis.forEach(a => a.currentTime = 700);
-            lr = 1;
+            lr = [0,1,0];
           } else if (l_time > 140 && l_time <= 240) {
             l_anis.forEach(a => a.currentTime = 800);
-            lr = 2;
+            lr = [0,2,0];
           } else if (l_time > 240 && l_time <= 340) {
             l_anis.forEach(a => a.currentTime = 900);
-            lr = 3;
+            lr = [0,3,0];
           } else if (l_time > 340 && l_time <= 440) {
             l_anis.forEach(a => a.currentTime = 1000);
-            lr = 4;
+            lr = [0,4,0];
           } else if (l_time > 440 && l_time <= 540) {
             l_anis.forEach(a => a.currentTime = 1100);
-            lr = 5;
+            lr = [0,5,0];
           } else if ((l_time > 540 && l_time <= 600) || (l_time >= 0 && l_time <= 40)) {
             l_anis.forEach(a => a.currentTime = 1200);
-            lr = 6;
+            lr = [0,6,0];
           }
           if (lm === 1 && cm === 1 && rm === 1) {
             spacem = 1;
@@ -328,22 +328,22 @@
           c_anis.forEach(a => a.pause());
           if (c_time > 40 && c_time <= 140) {
             c_anis.forEach(a => a.currentTime = 700);
-            cr = 1;
+            cr = [0,1,0];
           } else if (c_time > 140 && c_time <= 240) {
             c_anis.forEach(a => a.currentTime = 800);
-            cr = 2;
+            cr = [0,2,0];
           } else if (c_time > 240 && c_time <= 340) {
             c_anis.forEach(a => a.currentTime = 900);
-            cr = 6;
+            cr = [0,6,0];
           } else if (c_time > 340 && c_time <= 440) {
             c_anis.forEach(a => a.currentTime = 1000);
-            cr = 5;
+            cr = [0,5,0];
           } else if (c_time > 440 && c_time <= 540) {
             c_anis.forEach(a => a.currentTime = 1100);
-            cr = 3;
+            cr = [0,3,0];
           } else if ((c_time > 540 && c_time <= 600) || (c_time >= 0 && c_time <= 40)) {
             c_anis.forEach(a => a.currentTime = 1200);
-            cr = 4;
+            cr = [0,4,0];
           }
           if (lm === 1 && cm === 1 && rm === 1) {
             spacem = 1;
@@ -363,22 +363,22 @@
           r_anis.forEach(a => a.pause());
           if (r_time > 40 && r_time <= 140) {
             r_anis.forEach(a => a.currentTime = 700);
-            rr = 6;
+            rr = [0,6,0];
           } else if (r_time > 140 && r_time <= 240) {
             r_anis.forEach(a => a.currentTime = 800);
-            rr = 2;
+            rr = [0,2,0];
           } else if (r_time > 240 && r_time <= 340) {
             r_anis.forEach(a => a.currentTime = 900);
-            rr = 1;
+            rr = [0,1,0];
           } else if (r_time > 340 && r_time <= 440) {
             r_anis.forEach(a => a.currentTime = 1000);
-            rr = 4;
+            rr = [0,4,0];
           } else if (r_time > 440 && r_time <= 540) {
             r_anis.forEach(a => a.currentTime = 1100);
-            rr = 3;
+            rr = [0,3,0];
           } else if ((r_time > 540 && r_time <= 600) || (r_time >= 0 && r_time <= 40)) {
             r_anis.forEach(a => a.currentTime = 1200);
-            rr = 5;
+            rr = [0,5,0];
           }
           if (lm === 1 && cm === 1 && rm === 1) {
             spacem = 1;
