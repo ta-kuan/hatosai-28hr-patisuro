@@ -200,22 +200,22 @@
           const l_anis = [l1_ani, l2_ani, l3_ani, l4_ani, l5_ani, l6_ani];
           l_time = l1_ani.currentTime % 600;
           l_anis.forEach(a => a.pause());
-          if (l_time > 30 && l_time <= 130) {
+          if (l_time > 40 && l_time <= 140) {
             l_anis.forEach(a => a.currentTime = 700);
             lr = 5;
-          } else if (l_time > 130 && l_time <= 230) {
+          } else if (l_time > 140 && l_time <= 240) {
             l_anis.forEach(a => a.currentTime = 800);
             lr = 6;
-          } else if (l_time > 230 && l_time <= 330) {
+          } else if (l_time > 240 && l_time <= 340) {
             l_anis.forEach(a => a.currentTime = 900);
             lr = 1;
-          } else if (l_time > 330 && l_time <= 430) {
+          } else if (l_time > 340 && l_time <= 440) {
             l_anis.forEach(a => a.currentTime = 1000);
             lr = 2;
-          } else if (l_time > 430 && l_time <= 530) {
+          } else if (l_time > 440 && l_time <= 540) {
             l_anis.forEach(a => a.currentTime = 1100);
             lr = 3;
-          } else if ((l_time > 530 && l_time <= 600) || (l_time >= 0 && l_time <= 30)) {
+          } else if ((l_time > 540 && l_time <= 600) || (l_time >= 0 && l_time <= 40)) {
             l_anis.forEach(a => a.currentTime = 1200);
             lr = 4;
           }
