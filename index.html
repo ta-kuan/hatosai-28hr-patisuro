@@ -19,6 +19,24 @@
         width: 100vw;
         height: 100vh;
       }
+      .backl,
+      .backc,
+      .backr {
+        position: absolute;
+        width: 25vw;
+        height: 100vh;
+        border-radius: 50% / 10%;
+        background: linear-gradient(0deg, rgb(100,100,100) 0%, rgb(200,200,200) 10%, rgb(200,200,200) 90%, rgb(100,100,100) 100%);
+      }
+      .backl {
+        left: 6.25vw;
+      }
+      .backc {
+        left: 37.5vw;
+      }
+      .backr {
+        left: 68.75vw;
+      }
       .box {
         width: 20vw;
         height: 20vw;
@@ -99,6 +117,9 @@
       <img src="srotbar.png" class="box d r4 RR">
       <img src="srottyeri.png" class="box e r5 RR">
       <img src="srot28.png" class="box f r6 RR">
+      <div class="backl"></div>
+      <div class="backc"></div>
+      <div class="backr"></div>
     </div>
     <span class="result"></span>
     <script>
