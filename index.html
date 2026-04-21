@@ -235,22 +235,22 @@
           const c_anis = [c1_ani, c2_ani, c3_ani, c4_ani, c5_ani, c6_ani];
           c_time = c1_ani.currentTime % 600;
           c_anis.forEach(a => a.pause());
-          if (c_time > 20 && c_time <= 120) {
+          if (c_time > 40 && c_time <= 140) {
             c_anis.forEach(a => a.currentTime = 700);
             cr = 5;
-          } else if (c_time > 120 && c_time <= 220) {
+          } else if (c_time > 140 && c_time <= 240) {
             c_anis.forEach(a => a.currentTime = 800);
             cr = 6;
-          } else if (c_time > 220 && c_time <= 320) {
+          } else if (c_time > 240 && c_time <= 340) {
             c_anis.forEach(a => a.currentTime = 900);
             cr = 1;
-          } else if (c_time > 320 && c_time <= 420) {
+          } else if (c_time > 340 && c_time <= 440) {
             c_anis.forEach(a => a.currentTime = 1000);
             cr = 2;
-          } else if (c_time > 420 && c_time <= 520) {
+          } else if (c_time > 440 && c_time <= 540) {
             c_anis.forEach(a => a.currentTime = 1100);
             cr = 3;
-          } else if ((c_time > 520 && c_time <= 600) || (c_time >= 0 && c_time <= 20)) {
+          } else if ((c_time > 540 && c_time <= 600) || (c_time >= 0 && c_time <= 40)) {
             c_anis.forEach(a => a.currentTime = 1200);
             cr = 4;
           }
@@ -270,22 +270,22 @@
           const r_anis = [r1_ani, r2_ani, r3_ani, r4_ani, r5_ani, r6_ani];
           r_time = r1_ani.currentTime % 600;
           r_anis.forEach(a => a.pause());
-          if (r_time > 20 && r_time <= 120) {
+          if (r_time > 40 && r_time <= 140) {
             r_anis.forEach(a => a.currentTime = 700);
             rr = 5;
-          } else if (r_time > 120 && r_time <= 220) {
+          } else if (r_time > 140 && r_time <= 240) {
             r_anis.forEach(a => a.currentTime = 800);
             rr = 6;
-          } else if (r_time > 220 && r_time <= 320) {
+          } else if (r_time > 240 && r_time <= 340) {
             r_anis.forEach(a => a.currentTime = 900);
             rr = 1;
-          } else if (r_time > 320 && r_time <= 420) {
+          } else if (r_time > 340 && r_time <= 440) {
             r_anis.forEach(a => a.currentTime = 1000);
             rr = 2;
-          } else if (r_time > 420 && r_time <= 520) {
+          } else if (r_time > 440 && r_time <= 540) {
             r_anis.forEach(a => a.currentTime = 1100);
             rr = 3;
-          } else if ((r_time > 520 && r_time <= 600) || (r_time >= 0 && r_time <= 20)) {
+          } else if ((r_time > 540 && r_time <= 600) || (r_time >= 0 && r_time <= 40)) {
             r_anis.forEach(a => a.currentTime = 1200);
             rr = 4;
           }
