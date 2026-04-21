@@ -214,11 +214,21 @@
       let ramc = 0;
       let ramr = 0;
       let spacem = 1;
-      function checkc() {
+      function check() {
+        if (lr[0] === cr[0] && cr[0] === rr[0] && lr[0] >= 1 && lr[0] <= 6) {
+          document.querySelector(".suclt").classList.remove("off");
+          document.querySelector(".succt").classList.remove("off");
+          document.querySelector(".sucrt").classList.remove("off");
+        }
         if (lr[1] === cr[1] && cr[1] === rr[1] && lr[1] >= 1 && lr[1] <= 6) {
           document.querySelector(".suclc").classList.remove("off");
           document.querySelector(".succc").classList.remove("off");
           document.querySelector(".sucrc").classList.remove("off");
+        }
+        if (lr[2] === cr[2] && cr[2] === rr[2] && lr[2] >= 1 && lr[2] <= 6) {
+          document.querySelector(".suclb").classList.remove("off");
+          document.querySelector(".succb").classList.remove("off");
+          document.querySelector(".sucrb").classList.remove("off");
         }
       }
       window.onkeydown = (e) => {
@@ -312,7 +322,7 @@
           }
           if (lm === 1 && cm === 1 && rm === 1) {
             spacem = 1;
-            checkc();
+            check();
           }
         } else if (e.key === "s") {
           let c_time = 0;
@@ -347,7 +357,7 @@
           }
           if (lm === 1 && cm === 1 && rm === 1) {
             spacem = 1;
-            checkc();
+            check();
           }
         } else if (e.key === "d") {
           let r_time = 0;
@@ -382,7 +392,7 @@
           }
           if (lm === 1 && cm === 1 && rm === 1) {
             spacem = 1;
-            checkc();
+            check();
           }
         }
       };
