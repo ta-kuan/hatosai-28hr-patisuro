@@ -311,7 +311,7 @@
             document.querySelector(".sucrc").classList.add("off");
             document.querySelector(".sucrb").classList.add("off");
           }
-        } else if (e.key === "a") {
+        } else if (e.key === "a" && lm === 0) {
           lm = 1;
           const l1_ani = l1.getAnimations()[0];
           const l2_ani = l2.getAnimations()[0];
@@ -345,7 +345,7 @@
             spacem = 1;
             check();
           }
-        } else if (e.key === "s") {
+        } else if (e.key === "s" && cm === 0) {
           let c_time = 0;
           cm = 1;
           const c1_ani = c1.getAnimations()[0];
@@ -380,7 +380,7 @@
             spacem = 1;
             check();
           }
-        } else if (e.key === "d") {
+        } else if (e.key === "d" && rm === 0) {
           let r_time = 0;
           rm = 1;
           const r1_ani = r1.getAnimations()[0];
