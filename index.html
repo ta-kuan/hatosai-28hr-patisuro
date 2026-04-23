@@ -223,7 +223,7 @@
       let ramc = 0;
       let ramr = 0;
       let spacem = 1;
-      let A = 0;
+      let A = 1;
       const container = document.querySelector('.coins');
       function updateCoins(newA) {
         if (newA < 0) newA = 0;
@@ -241,7 +241,7 @@
           }
         } else if (newA < currentCount) {
           for (let i = currentCount; i > newA; i--) {
-            container.lastElementChild.remove();
+            if (i > 1) container.lastElementChild.remove();
           }
         }
         A = newA;
