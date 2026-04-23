@@ -233,8 +233,8 @@
           for (let i = currentCount + 1; i <= newA; i++) {
             const original = document.querySelector('.coin');
             const clone = original.cloneNode(true);
-            const topValue = i * 1.2 + 1;
-            clone.style.top = `${topValue}vh`;
+            const bottomValue = i * 1.2 + 1;
+            clone.style.bottom = `${bottomValue}vh`;
             clone.classList.remove("off");
             container.appendChild(clone);
           }
