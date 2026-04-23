@@ -202,7 +202,7 @@
       </div>
       <span class="coins_number"></span>
     </div>
-    <script>
+    <script type="module">
       const box = document.querySelector(".box");
       const l1 = document.querySelector(".l1");
       const l2 = document.querySelector(".l2");
@@ -465,6 +465,28 @@
         }
       };
       window.dispatchEvent(new KeyboardEvent('keydown', { code: "Space" }));
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+      import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+      const firebaseConfig = {
+        apiKey: "ここ",
+        authDomain: "ここ",
+        databaseURL: "ここ",
+        projectId: "ここ"
+      };
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+      // URLからID取得
+      const params = new URLSearchParams(location.search);
+      const id = params.get("id");
+      if (!id) {
+        throw new Error("no id");
+      }
+      // 自分のデータだけ監視
+      const messageRef = ref(db, "messages/" + id);
+      onValue(messageRef, (snapshot) => {
+        A = snapshot.val() ?? 0;
+        updateCoins(A);
+      });
     </script>
   </body>
 </html>
