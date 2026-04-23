@@ -190,6 +190,7 @@
       <div class="coins">
         <img src="coin.png" class="coin off" id="parent_coin"></img>
       </div>
+      <span class="coins_number"></span>
     </div>
     <script>
       const box = document.querySelector(".box");
@@ -225,6 +226,7 @@
       let spacem = 1;
       let A = 7;
       const container = document.querySelector('.coins');
+      const coins_number = document.querySelector('.coins_number');
       function updateCoins(newA) {
         if (newA < 1) newA = 1;
         const currentCoins = container.querySelectorAll('.coin');
@@ -237,10 +239,15 @@
             clone.style.bottom = `${bottomValue}vh`;
             clone.classList.remove("off");
             container.appendChild(clone);
+            if (i === newA) {
+              coins_number.textContent = newA;
+              coins_number.style.bottom = `${bottomValue + 2}vh`
+            }
           }
         } else if (newA < currentCount) {
           for (let i = currentCount; i > newA; i--) {
             if (i > 1) container.lastElementChild.remove();
+            coins_number.textContent = Number(coins_number.textContent - 1);
           }
         }
         A = newA;
