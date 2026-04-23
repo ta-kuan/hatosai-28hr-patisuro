@@ -226,6 +226,7 @@
       let A = 1;
       const container = document.querySelector('.coins');
       function updateCoins(newA) {
+        if (newA < 1) newA = 1;
         const currentCoins = container.querySelectorAll('.coin');
         const currentCount = currentCoins.length;
         if (newA > currentCount) {
