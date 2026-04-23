@@ -143,8 +143,8 @@
       }
       .coin {
         position: absolute;
-        right: 25px;
-        width: 40px;
+        right: -1vw;
+        width: 7vw;
         height: auto;
       }
     </style>
@@ -233,9 +233,8 @@
           for (let i = currentCount + 1; i <= newA; i++) {
             const original = document.querySelector('.coin');
             const clone = original.cloneNode(true);
-            const topValue = i * 25 + 25;
-            clone.style.position = 'absolute';
-            clone.style.top = `${topValue}px`;
+            const topValue = i * 1.2 + 1;
+            clone.style.top = `${topValue}vh`;
             clone.classList.remove("off");
             container.appendChild(clone);
           }
