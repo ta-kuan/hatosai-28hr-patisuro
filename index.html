@@ -246,8 +246,10 @@
           }
         } else if (newA < currentCount) {
           for (let i = currentCount; i > newA; i--) {
-            if (i > 1) container.lastElementChild.remove();
-            coins_number.textContent = Number(coins_number.textContent - 1);
+            if (i > 1) {
+              container.lastElementChild.remove();
+              coins_number.textContent = Number(coins_number.textContent - 1);
+            }
           }
         }
         A = newA;
