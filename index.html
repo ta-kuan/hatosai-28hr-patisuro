@@ -246,7 +246,7 @@
             container.appendChild(clone);
             if (i === newA) {
               coins_number.textContent = newA - 1;
-              coins_number.style.bottom = `${bottomValue + 5.5}vh`
+              coins_number.style.bottom = `${bottomValue + 6.5}vh`
             }
           }
         } else if (newA < currentCount) {
@@ -254,7 +254,7 @@
             if (i > 1) {
               container.lastElementChild.remove();
               coins_number.textContent = Number(coins_number.textContent - 1);
-              coins_number.style.bottom = `${Number(coins_number.style.bottom) - 1.2}vh`
+              coins_number.style.bottom = `${parseFloat(coins_number.style.bottom) - 1.2}vh`
             }
           }
         }
