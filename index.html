@@ -241,6 +241,7 @@
         if (newA < 1) newA = 1;
         const currentCoins = container.querySelectorAll('.coin');
         const currentCount = currentCoins.length;
+        // 追加
         if (newA > currentCount) {
           for (let i = currentCount + 1; i <= newA; i++) {
             const original = document.querySelector('.coin');
@@ -250,13 +251,16 @@
             clone.classList.remove("off");
             container.appendChild(clone);
           }
-        } else if (newA < currentCount) {
+        }
+        // 削除
+        else if (newA < currentCount) {
           for (let i = currentCount; i > newA; i--) {
             if (i > 1) {
               container.lastElementChild.remove();
             }
           }
         }
+        // 最後に確定値で統一更新
         A = newA;
         coins_number.textContent = A;
         const bottomValue = A * 1.2 + 1;
