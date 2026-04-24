@@ -300,12 +300,8 @@
         if (e.code === "Space") {
           if (lm === 1 && cm === 1 && rm === 1 && spacem === 1 && A > 1) {
             if (C === 1) {
-              document.querySelector(".srot7"),classList.remove("off");
-              document.querySelector(".srot28"),classList.remove("off");
-              document.querySelector(".srottyeri"),classList.remove("off");
-              document.querySelector(".srotberu"),classList.remove("off");
-              document.querySelector(".srotbar"),classList.remove("off");
-              document.querySelector(".srotsuika"),classList.remove("off");
+              document.querySelectorAll(".box").forEach(el => el.classList.remove("off"));
+              C = 0;
             }
             updateCoins(A - 1);
             document.querySelectorAll(".a").forEach(el => {
@@ -507,12 +503,7 @@
         coins_number.style.bottom = `${B * 1.2 + 7.5}vh`
         updateCoins(A - 1);
         updateCoins(A + 1);
-        document.querySelector(".srot7"),classList.add("off");
-        document.querySelector(".srot28"),classList.add("off");
-        document.querySelector(".srottyeri"),classList.add("off");
-        document.querySelector(".srotberu"),classList.add("off");
-        document.querySelector(".srotbar"),classList.add("off");
-        document.querySelector(".srotsuika"),classList.add("off");
+        if (C === 0) document.querySelectorAll(".box").forEach(el => el.classList.add("off"));
         C = 1;
       });
     </script>
