@@ -298,7 +298,7 @@
       }
       window.onkeydown = (e) => {
         if (e.code === "Space") {
-          if (lm === 1 && cm === 1 && rm === 1 && spacem === 1 && A > 1) {
+          if (lm === 1 && cm === 1 && rm === 1 && spacem === 1 && A > 0) {
             if (C === 1) {
               document.querySelectorAll(".box").forEach(el => el.classList.remove("off"));
               C = 0;
