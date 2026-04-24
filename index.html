@@ -482,6 +482,7 @@
         throw new Error("no id");
       }
       // 自分のデータだけ監視
+      let B = 0;
       const messageRef = ref(db, "messages/" + id);
       onValue(messageRef, (snapshot) => {
         const value = snapshot.val() ?? 0;
