@@ -489,11 +489,11 @@
         console. log(B);
         if (Number(coins_number.textContent) > B) {
           for (let n = 1; n <= (Number(coins_number.textContent) - B); n++) {
-            updateCoins(A - 1);
+            updateCoins(B);
           }
         } else if (Number(coins_number.textContent) < B) {
           for (let n = 1; n <= (B - Number(coins_number.textContent)); n++) {
-            updateCoins(A + 1);
+            updateCoins(B);
           }
         }
       });
