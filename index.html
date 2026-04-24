@@ -234,7 +234,7 @@
       let ramc = 0;
       let ramr = 0;
       let spacem = 1;
-      let A = 1;
+      let A = 2;
       const container = document.querySelector('.coins');
       const coins_number = document.querySelector('.coins_number');
       function updateCoins(newA) {
@@ -263,7 +263,7 @@
         // 最後に確定値で統一更新
         A = newA;
         coins_number.textContent = A;
-        const bottomValue = A * 1.2 + 1;
+        const bottomValue = (A + 1) * 1.2 + 1;
         coins_number.style.bottom = `${bottomValue + 6.5}vh`;
       }
       function check() {
