@@ -489,21 +489,15 @@
       }
       // 自分のデータだけ監視
       let B = 0;
-      let C = 0;
       const messageRef = ref(db, "messages/" + id);
-      let initialized = false;
       onValue(messageRef, (snapshot) => {
         const B = snapshot.val() ?? 0;
-        if (!initialized) {
-          updateCoins(B);
-          coins_number.textContent = B;
-          coins_number.style.bottom = `${B * 1.2 + 8.5}vh`;
-          initialized = true;
-          return;
-        }
+        console.log(B);
         updateCoins(B);
         coins_number.textContent = B;
-        coins_number.style.bottom = `${B * 1.2 + 8.5}vh`;
+        coins_number.style.bottom = `${B * 1.2 + 7.5}vh`
+        updateCoins(A - 1);
+        updateCoins(A + 1);
       });
       window.dispatchEvent(new KeyboardEvent('keydown', { code: "Space" }));
     </script>
