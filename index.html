@@ -249,7 +249,7 @@
         const currentCount = currentCoins.length;
         if (newA > currentCount) {
           for (let i = currentCount + 1; i <= newA; i++) {
-            const original = document.querySelector('.coin');
+            const original = document.getElementById('parent_coin');
             const clone = original.cloneNode(true);
             const bottomValue = i * 1.2 + 1;
             clone.style.bottom = `${bottomValue}vh`;
