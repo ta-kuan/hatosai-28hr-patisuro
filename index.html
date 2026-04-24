@@ -151,6 +151,12 @@
         width: 7vw;
         height: auto;
       }
+      #parent_coin {
+        position: absolute;
+        right: -1vw;
+        width: 7vw;
+        height: auto;
+      }
       .coins_number {
         position: absolute;
         right: 1.6vw;
@@ -197,7 +203,7 @@
         <div class="sucrc off"></div>
         <div class="sucrb off"></div>
       </div>
-      <img src="coin.png" class="coin off" id="parent_coin"></img>
+      <img src="coin.png" class="off" id="parent_coin"></img>
       <div class="coins">
       </div>
       <span class="coins_number"></span>
@@ -242,7 +248,7 @@
         const currentCoins = container.querySelectorAll('.coin');
         const currentCount = currentCoins.length;
         if (newA > currentCount) {
-          for (let i = currentCount; i <= newA; i++) {
+          for (let i = currentCount + 1; i <= newA; i++) {
             const original = document.querySelector('.coin');
             const clone = original.cloneNode(true);
             const bottomValue = i * 1.2 + 1;
