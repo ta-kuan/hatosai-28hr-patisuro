@@ -164,14 +164,20 @@
         font-family: "dot";
       }
       .start {
-        position: absolute;
+        pposition: absolute;
         left: 50%;
         top: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
+      }
+      .start::after {
+        content: "Spaceキーでスタート";
+        pposition: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
         font-family: "dot";
-        font-family: 100%;
-        width: 60vw;
-        height: 20vh;
+        font-size: 220%;
+        white-space: nowrap;
       }
     </style>
   </head>
@@ -217,7 +223,7 @@
       <div class="coins">
       </div>
       <span class="coins_number"></span>
-      <span class="start">Spaceキーでスタート</span>
+      <span class="start"></span>
     </div>
     <script type="module">
       const box = document.querySelector(".box");
