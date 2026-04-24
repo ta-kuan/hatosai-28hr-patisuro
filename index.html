@@ -485,14 +485,17 @@
       let B = 0;
       const messageRef = ref(db, "messages/" + id);
       onValue(messageRef, (snapshot) => {
-        const B = snapshot.val() ?? 0;
-      
-        const current = Number(coins_number.textContent);
-      
-        if (B > current) {
-          updateCoins(B + 1);
-        } else if (B < current) {
-          updateCoins(B + 1);
+        const kaisu = Number(coins_number.textContent)
+        B = snapshot.val() ?? 0;
+        console. log(B);
+        if (Number(kaisu) > B) {
+          for (let n = 1; n <= (kaisu - B); n++) {
+            updateCoins(A - n);
+          }
+        } else if (kaisu < B) {
+          for (let n = 1; n <= (B - kaisu; n++) {
+            updateCoins(A + n);
+          }
         }
       });
     </script>
