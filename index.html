@@ -488,7 +488,7 @@
         const kaisu = Number(coins_number.textContent)
         B = snapshot.val() ?? 0;
         console. log(B);
-        if (Number(kaisu) > B) {
+        if (kaisu > B) {
           for (let n = 1; n <= (kaisu - B); n++) {
             updateCoins(A - n);
           }
