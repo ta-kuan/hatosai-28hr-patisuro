@@ -258,7 +258,7 @@
             container.appendChild(clone);
             if (i === newA) {
               coins_number.textContent = newA;
-              coins_number.style.bottom = `${bottomValue + 6.5}vh`
+              coins_number.style.bottom = `${bottomValue + 7.5}vh`
             }
           }
         } else if (newA < currentCount) {
@@ -491,18 +491,19 @@
       let B = 0;
       let C = 0;
       const messageRef = ref(db, "messages/" + id);
+      let initialized = false;
       onValue(messageRef, (snapshot) => {
         const B = snapshot.val() ?? 0;
-        console.log(B);
-        // 「B」がコインの数値なら、ターゲットとするAは「B + 1」枚
+        if (!initialized) {
+          updateCoins(B);
+          coins_number.textContent = B;
+          coins_number.style.bottom = `${B * 1.2 + 8.5}vh`;
+          initialized = true;
+          return;
+        }
         updateCoins(B);
         coins_number.textContent = B;
-        coins_number.style.bottom = `${B * 1.2 + 7.5}vh`
-        if (C === 0) {
-          updateCoins(A - 1);
-          updateCoins(A + 1);
-          C = 1;
-        }
+        coins_number.style.bottom = `${B * 1.2 + 8.5}vh`;
       });
       window.dispatchEvent(new KeyboardEvent('keydown', { code: "Space" }));
     </script>
