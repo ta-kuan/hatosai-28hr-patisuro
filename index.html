@@ -234,7 +234,7 @@
       let ramc = 0;
       let ramr = 0;
       let spacem = 1;
-      let A = 7;
+      let A = 1;
       const container = document.querySelector('.coins');
       const coins_number = document.querySelector('.coins_number');
       function updateCoins(newA) {
@@ -242,8 +242,8 @@
         const currentCoins = container.querySelectorAll('.coin');
         const currentCount = currentCoins.length;
         // 追加
-        if (newA > currentCount) {
-          for (let i = currentCount + 1; i <= newA; i++) {
+        if (newA + 1 > currentCount) {
+          for (let i = currentCount + 1; i <= newA + 1; i++) {
             const original = document.querySelector('.coin');
             const clone = original.cloneNode(true);
             const bottomValue = i * 1.2 + 1;
@@ -253,8 +253,8 @@
           }
         }
         // 削除
-        else if (newA < currentCount) {
-          for (let i = currentCount; i > newA; i--) {
+        else if (newA + 1 < currentCount) {
+          for (let i = currentCount; i > newA + 1; i--) {
             if (i > 1) {
               container.lastElementChild.remove();
             }
