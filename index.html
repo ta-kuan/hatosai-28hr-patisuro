@@ -483,9 +483,9 @@
       // 自分のデータだけ監視
       const messageRef = ref(db, "messages/" + id);
       onValue(messageRef, (snapshot) => {
-        A = snapshot.val() ?? 0;
-        console.log(A);
-        updateCoins(A + 1);
+        B = snapshot.val() ?? 0;
+        console.log(B);
+        updateCoins(B + 1);
       });
       window.dispatchEvent(new KeyboardEvent('keydown', { code: "Space" }));
     </script>
