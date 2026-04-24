@@ -234,37 +234,36 @@
       let ramc = 0;
       let ramr = 0;
       let spacem = 1;
-      let A = 2;
+      let A = 7;
       const container = document.querySelector('.coins');
       const coins_number = document.querySelector('.coins_number');
       function updateCoins(newA) {
         if (newA < 1) newA = 1;
         const currentCoins = container.querySelectorAll('.coin');
         const currentCount = currentCoins.length;
-        // 追加
-        if (newA + 1 > currentCount) {
-          for (let i = currentCount + 1; i <= newA + 1; i++) {
+        if (newA > currentCount) {
+          for (let i = currentCount + 1; i <= newA; i++) {
             const original = document.querySelector('.coin');
             const clone = original.cloneNode(true);
             const bottomValue = i * 1.2 + 1;
             clone.style.bottom = `${bottomValue}vh`;
             clone.classList.remove("off");
             container.appendChild(clone);
+            if (i === newA) {
+              coins_number.textContent = newA - 1;
+              coins_number.style.bottom = `${bottomValue + 6.5}vh`
+            }
           }
-        }
-        // 削除
-        else if (newA + 1 < currentCount) {
-          for (let i = currentCount; i > newA + 1; i--) {
+        } else if (newA < currentCount) {
+          for (let i = currentCount; i > newA; i--) {
             if (i > 1) {
               container.lastElementChild.remove();
+              coins_number.textContent = Number(coins_number.textContent - 1);
+              coins_number.style.bottom = `${parseFloat(coins_number.style.bottom) - 1.2}vh`
             }
           }
         }
-        // 最後に確定値で統一更新
         A = newA;
-        coins_number.textContent = A;
-        const bottomValue = (A + 1) * 1.2 + 1;
-        coins_number.style.bottom = `${bottomValue + 6.5}vh`;
       }
       function check() {
         if (lr[0] === cr[0] && cr[0] === rr[0] && lr[0] >= 1 && lr[0] <= 6) {
@@ -469,6 +468,10 @@
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
       import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
       const firebaseConfig = {
+        apiKey: "ここ",
+        authDomain: "ここ",
+        databaseURL: "ここ",
+        projectId: "ここ"
         apiKey: "AIzaSyCdr0-2-H3jLSNsIIF1Bhou4BehZn8Ka2A",
         authDomain: "hatosai-link-28hr.firebaseapp.com",
         databaseURL: "https://hatosai-link-28hr-default-rtdb.firebaseio.com",
