@@ -197,8 +197,8 @@
         <div class="sucrc off"></div>
         <div class="sucrb off"></div>
       </div>
+      <img src="coin.png" class="coin off" id="parent_coin"></img>
       <div class="coins">
-        <img src="coin.png" class="coin off" id="parent_coin"></img>
       </div>
       <span class="coins_number"></span>
     </div>
@@ -489,7 +489,7 @@
         console.log(B);
         // 「B」がコインの数値なら、ターゲットとするAは「B + 1」枚
         updateCoins(B);
-        coins_number.textContent = B - 1;
+        coins_number.textContent = B;
       });
     </script>
   </body>
