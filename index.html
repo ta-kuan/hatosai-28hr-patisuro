@@ -254,6 +254,7 @@
             const bottomValue = i * 1.2 + 1;
             clone.style.bottom = `${bottomValue}vh`;
             clone.classList.remove("off");
+            clone.classList.add("coin");
             container.appendChild(clone);
             if (i === newA) {
               coins_number.textContent = newA - 1;
