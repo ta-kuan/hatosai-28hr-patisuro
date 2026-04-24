@@ -237,33 +237,39 @@
       let A = 2;
       const container = document.querySelector('.coins');
       const coins_number = document.querySelector('.coins_number');
-      function updateCoins(newA) {
-        if (newA < 1) newA = 1;
-        const currentCoins = container.querySelectorAll('.coin');
-        const currentCount = currentCoins.length;
-        if (newA > currentCount) {
-          for (let i = currentCount + 1; i <= newA; i++) {
+      function updateCoins(targetA) {
+        if (targetA < 1) targetA = 1;
+        
+        // 現在表示されているコインの数を確認
+        let currentCoins = container.querySelectorAll('.coin');
+        let currentCount = currentCoins.length;
+      
+        if (targetA > currentCount) {
+          // 足りない分だけ追加
+          for (let i = currentCount + 1; i <= targetA; i++) {
             const original = document.querySelector('.coin');
             const clone = original.cloneNode(true);
             const bottomValue = i * 1.2 + 1;
             clone.style.bottom = `${bottomValue}vh`;
             clone.classList.remove("off");
             container.appendChild(clone);
-            if (i === newA) {
-              coins_number.textContent = newA - 1;
-              coins_number.style.bottom = `${bottomValue + 6.5}vh`
-            }
           }
-        } else if (newA < currentCount) {
-          for (let i = currentCount; i > newA; i--) {
+        } else if (targetA < currentCount) {
+          // 多い分だけ削除（1枚目は残す）
+          for (let i = currentCount; i > targetA; i--) {
             if (i > 1) {
               container.lastElementChild.remove();
-              coins_number.textContent = Number(coins_number.textContent - 1);
-              coins_number.style.bottom = `${parseFloat(coins_number.style.bottom) - 1.2}vh`
             }
           }
         }
-        A = newA;
+      
+        // 数値と位置の更新（最後に1回だけ行う）
+        const finalCount = container.querySelectorAll('.coin').length;
+        const finalBottom = finalCount * 1.2 + 1;
+        coins_number.textContent = finalCount - 1;
+        coins_number.style.bottom = `${finalBottom + 6.5}vh`;
+        
+        A = finalCount;
       }
       function check() {
         if (lr[0] === cr[0] && cr[0] === rr[0] && lr[0] >= 1 && lr[0] <= 6) {
@@ -485,18 +491,11 @@
       let B = 0;
       const messageRef = ref(db, "messages/" + id);
       onValue(messageRef, (snapshot) => {
-        const kaisu = Number(coins_number.textContent)
-        B = snapshot.val() ?? 0;
-        console. log(B);
-        if (kaisu > B) {
-          for (let n = 1; n <= (kaisu - B); n++) {
-            updateCoins(A - n);
-          }
-        } else if (kaisu < B) {
-          for (let n = 1; n <= (B - kaisu); n++) {
-            updateCoins(A + n);
-          }
-        }
+        const B = snapshot.val() ?? 0;
+        console.log(B);
+        
+        // 「B」がコインの数値なら、ターゲットとするAは「B + 1」枚
+        updateCoins(B + 1);
       });
     </script>
   </body>
