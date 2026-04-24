@@ -197,8 +197,8 @@
         <div class="sucrc off"></div>
         <div class="sucrb off"></div>
       </div>
-      <img src="coin.png" class="coin off" id="parent_coin"></img>
-      <div class="coins">   
+      <div class="coins">
+        <img src="coin.png" class="coin off" id="parent_coin"></img>
       </div>
       <span class="coins_number"></span>
     </div>
@@ -234,14 +234,13 @@
       let ramc = 0;
       let ramr = 0;
       let spacem = 1;
-      let A = 2;
+      let A = 7;
       const container = document.querySelector('.coins');
       const coins_number = document.querySelector('.coins_number');
       function updateCoins(newA) {
         if (newA < 1) newA = 1;
         const currentCoins = container.querySelectorAll('.coin');
         const currentCount = currentCoins.length;
-        container.innerHTML = '';
         if (newA > currentCount) {
           for (let i = currentCount + 1; i <= newA; i++) {
             const original = document.querySelector('.coin');
@@ -465,6 +464,7 @@
           updateCoins(A - 1);
         }
       };
+      window.dispatchEvent(new KeyboardEvent('keydown', { code: "Space" }));
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
       import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
       const firebaseConfig = {
@@ -482,15 +482,11 @@
         throw new Error("no id");
       }
       // 自分のデータだけ監視
-      let B = 0;
       const messageRef = ref(db, "messages/" + id);
       onValue(messageRef, (snapshot) => {
-        const value = snapshot.val() ?? 0;
-        if (value === B) return;
-        B = value;
-        updateCoins(B + 1);
+        A = snapshot.val() ?? 0;
+        updateCoins(A);
       });
-      window.dispatchEvent(new KeyboardEvent('keydown', { code: "Space" }));
     </script>
   </body>
 </html>
