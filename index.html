@@ -484,7 +484,7 @@
       const messageRef = ref(db, "messages/" + id);
       onValue(messageRef, (snapshot) => {
         A = snapshot.val() ?? 0;
-        updateCoins(A);
+        updateCoins(A + 1);
       });
       window.dispatchEvent(new KeyboardEvent('keydown', { code: "Space" }));
     </script>
