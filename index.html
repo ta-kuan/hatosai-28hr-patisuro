@@ -488,7 +488,8 @@
         const B = snapshot.val() ?? 0;
         console.log(B);
         // 「B」がコインの数値なら、ターゲットとするAは「B + 1」枚
-        updateCoins(B);
+        updateCoins(B + 1);
+        coins_number.textContent = B;
       });
     </script>
   </body>
