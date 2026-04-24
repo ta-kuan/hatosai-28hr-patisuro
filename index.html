@@ -488,7 +488,7 @@
         B = snapshot.val() ?? 0;
         console. log(B);
         if (Number(coins_number.textContent) > B) {
-          for (let n = 1; n <= (Number(coins_number.textContent) - B); n++) {
+          for (let n = 1; n <= (Number(coins_number.textContent)) - B); n++) {
             updateCoins(A - 1);
           }
         } else if ((Number(coins_number.textContent) < B) {
