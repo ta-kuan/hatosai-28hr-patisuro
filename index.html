@@ -485,7 +485,7 @@
       onValue(messageRef, (snapshot) => {
         A = snapshot.val() ?? 0;
         console.log(A);
-        updateCoins(A);
+        updateCoins(A + 1);
       });
       window.dispatchEvent(new KeyboardEvent('keydown', { code: "Space" }));
     </script>
