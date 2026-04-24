@@ -163,6 +163,16 @@
         font-size: 3.5vw;
         font-family: "dot";
       }
+      .start {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        font-family: "dot";
+        font-family: 100%;
+        width: 60vw;
+        height: 20vh;
+      }
     </style>
   </head>
   <body>
@@ -207,6 +217,7 @@
       <div class="coins">
       </div>
       <span class="coins_number"></span>
+      <span class="start">Spaceキーでスタート</span>
     </div>
     <script type="module">
       const box = document.querySelector(".box");
@@ -244,6 +255,7 @@
       let C = 0;
       const container = document.querySelector('.coins');
       const coins_number = document.querySelector('.coins_number');
+      const start = document.querySelector('.start');
       function updateCoins(newA) {
         if (newA < 0) newA = 0;
         const currentCoins = container.querySelectorAll('.coin');
@@ -301,6 +313,7 @@
           if (lm === 1 && cm === 1 && rm === 1 && spacem === 1 && A > 0) {
             if (C === 1) {
               document.querySelectorAll(".box").forEach(el => el.classList.remove("off"));
+              start.classList.add("off");
               C = 0;
             }
             updateCoins(A - 1);
@@ -503,8 +516,11 @@
         coins_number.style.bottom = `${B * 1.2 + 7.5}vh`
         updateCoins(A - 1);
         updateCoins(A + 1);
-        if (C === 0) document.querySelectorAll(".box").forEach(el => el.classList.add("off"));
-        C = 1;
+        if (C === 0) {
+          document.querySelectorAll(".box").forEach(el => el.classList.add("off"));
+          start.classList.remove("off");
+          C = 1;
+        }
       });
     </script>
   </body>
