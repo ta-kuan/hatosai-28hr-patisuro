@@ -340,8 +340,8 @@
               start.classList.add("off");
               C = 0;
             }
-            if (!buffer) await loadSound();
-            if (audioCtx.state === "suspended") await audioCtx.resume();
+            if (!buffer) loadSound();
+            if (audioCtx.state === "suspended") audioCtx.resume();
             updateCoins(A - 1);
             document.querySelectorAll(".a").forEach(el => {
               el.classList.add("next");
