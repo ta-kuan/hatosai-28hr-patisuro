@@ -267,9 +267,18 @@
       const container = document.querySelector('.coins');
       const coins_number = document.querySelector('.coins_number');
       const start = document.querySelector('.start');
+      onst audioCtx = new AudioContext();
+      let buffer;
+      async function loadSound() {
+        const res = await fetch("srot_stop.mp3");
+        const arrayBuffer = await res.arrayBuffer();
+        buffer = await audioCtx.decodeAudioData(arrayBuffer);
+      }
       function stop_audio() {
-        const srot_stop = new Audio('srot_stop.mp3');
-        srot_stop.play();
+        const source = audioCtx.createBufferSource();
+        source.buffer = buffer;
+        source.connect(audioCtx.destination);
+        source.start(0);
       }
       function updateCoins(newA) {
         if (newA < 0) newA = 0;
