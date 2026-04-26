@@ -267,7 +267,10 @@
       const container = document.querySelector('.coins');
       const coins_number = document.querySelector('.coins_number');
       const start = document.querySelector('.start');
-      const srot_stop = new Audio('srot_stop.mp3');
+      function stop_audio() {
+        const srot_stop = new Audio('srot_stop.mp3');
+        srot_stop.play();
+      }
       function updateCoins(newA) {
         if (newA < 0) newA = 0;
         const currentCoins = container.querySelectorAll('.coin');
@@ -392,7 +395,7 @@
             document.querySelector(".sucrb").classList.add("off");
           }
         } else if (e.key === "a" && lm === 0) {
-          srot_stop.play();
+          stop_audio();
           lm = 1;
           const l1_ani = l1.getAnimations()[0];
           const l2_ani = l2.getAnimations()[0];
@@ -427,7 +430,7 @@
             check();
           }
         } else if (e.key === "s" && cm === 0) {
-          srot_stop.play();
+          stop_audio();
           cm = 1;
           const c1_ani = c1.getAnimations()[0];
           const c2_ani = c2.getAnimations()[0];
@@ -462,7 +465,7 @@
             check();
           }
         } else if (e.key === "d" && rm === 0) {
-          srot_stop.play();
+          stop_audio();
           rm = 1;
           const r1_ani = r1.getAnimations()[0];
           const r2_ani = r2.getAnimations()[0];
