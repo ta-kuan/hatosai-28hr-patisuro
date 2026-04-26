@@ -274,7 +274,7 @@
         const arrayBuffer = await res.arrayBuffer();
         buffer = await audioCtx.decodeAudioData(arrayBuffer);
       }
-      function stop_audio() {
+      function srot_stop() {
         const source = audioCtx.createBufferSource();
         source.buffer = buffer;
         source.connect(audioCtx.destination);
