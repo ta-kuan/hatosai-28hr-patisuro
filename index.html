@@ -256,6 +256,8 @@
       let rr = [0,0,0];
       let rm = 1;
       let l_time = 0;
+      let c_time = 0;
+      let r_time = 0;
       let raml = 0;
       let ramc = 0;
       let ramr = 0;
@@ -265,6 +267,7 @@
       const container = document.querySelector('.coins');
       const coins_number = document.querySelector('.coins_number');
       const start = document.querySelector('.start');
+      const srot_stop = new Audio('srot_stop.mp3');
       function updateCoins(newA) {
         if (newA < 0) newA = 0;
         const currentCoins = container.querySelectorAll('.coin');
@@ -389,6 +392,7 @@
             document.querySelector(".sucrb").classList.add("off");
           }
         } else if (e.key === "a" && lm === 0) {
+          srot_stop.play();
           lm = 1;
           const l1_ani = l1.getAnimations()[0];
           const l2_ani = l2.getAnimations()[0];
@@ -423,7 +427,7 @@
             check();
           }
         } else if (e.key === "s" && cm === 0) {
-          let c_time = 0;
+          srot_stop.play();
           cm = 1;
           const c1_ani = c1.getAnimations()[0];
           const c2_ani = c2.getAnimations()[0];
@@ -458,7 +462,7 @@
             check();
           }
         } else if (e.key === "d" && rm === 0) {
-          let r_time = 0;
+          srot_stop.play();
           rm = 1;
           const r1_ani = r1.getAnimations()[0];
           const r2_ani = r2.getAnimations()[0];
