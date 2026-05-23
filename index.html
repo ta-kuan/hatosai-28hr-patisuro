@@ -186,7 +186,6 @@
   </head>
   <body>
     <div class="srot">
-      <input>
       <div class="mark">
         <img src="srot7.png" class="box a l1 LL off">
         <img src="srotberu.png" class="box b l2 LL off">
@@ -266,6 +265,7 @@
       let A = 2;
       let C = 1;
       let plus = 0;
+      let time = 500;
       const container = document.querySelector('.coins');
       const coins_number = document.querySelector('.coins_number');
       const start = document.querySelector('.start');
@@ -352,6 +352,7 @@
           }
           for (let i = 0; i < plus; i++) {
               updateCoins(A + 1);
+              await new Promise(resolve => setTimeout(resolve, time));
           }
         } else if (lr[1] === cr[1] && cr[1] === rr[1] && lr[1] >= 1 && lr[1] <= 6) {
           document.querySelector(".suclc").classList.remove("off");
@@ -379,6 +380,7 @@
           }
           for (let i = 0; i < plus; i++) {
               updateCoins(A + 1);
+              await new Promise(resolve => setTimeout(resolve, time));
           }
         } else if (lr[2] === cr[2] && cr[2] === rr[2] && lr[2] >= 1 && lr[2] <= 6) {
           document.querySelector(".suclb").classList.remove("off");
@@ -406,6 +408,7 @@
           }
           for (let i = 0; i < plus; i++) {
               updateCoins(A + 1);
+              await new Promise(resolve => setTimeout(resolve, time));
           }
         } else if (lr[0] === cr[1] && cr[1] === rr[2] && lr[0] >= 1 && lr[0] <= 6) {
           document.querySelector(".suclt").classList.remove("off");
@@ -433,6 +436,7 @@
           }
           for (let i = 0; i < plus; i++) {
               updateCoins(A + 1);
+              await new Promise(resolve => setTimeout(resolve, time));
           }
         } else if (lr[2] === cr[1] && cr[1] === rr[0] && lr[2] >= 1 && lr[2] <= 6) {
           document.querySelector(".suclb").classList.remove("off");
@@ -460,6 +464,7 @@
           }
           for (let i = 0; i < plus; i++) {
               updateCoins(A + 1);
+              await new Promise(resolve => setTimeout(resolve, time));
           }
         }
       }
@@ -581,7 +586,6 @@
             spacem = 1;
             check();
           }
-          await new Promise(resolve => setTimeout(resolve, 500));
         } else if (e.key === "s" && cm === 0) {
           stop_audio();
           cm = 1;
@@ -617,7 +621,6 @@
             spacem = 1;
             check();
           }
-          await new Promise(resolve => setTimeout(resolve, 500));
         } else if (e.key === "d" && rm === 0) {
           stop_audio();
           rm = 1;
@@ -653,7 +656,6 @@
             spacem = 1;
             check();
           }
-          await new Promise(resolve => setTimeout(resolve, 500));
         } else if (e.key === "x") {
           updateCoins(A + 1);
         } else if (e.key === "z") {
