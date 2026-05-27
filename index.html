@@ -272,6 +272,7 @@
       const audioCtx = new AudioContext();
       let stopBuffer;
       let coinBuffer;
+      let startBuffer;
       let button = 0;
       async function loadStopSound() {
         const res = await fetch("srot_stop.mp3");
@@ -283,6 +284,11 @@
         const arrayBuffer = await res.arrayBuffer();
         coinBuffer = await audioCtx.decodeAudioData(arrayBuffer);
       }
+      async function loadStartSound() {
+        const res = await fetch("srot_start.wav");
+        const arrayBuffer = await res.arrayBuffer();
+        startBuffer = await audioCtx.decodeAudioData(arrayBuffer);
+      }
       function stop_audio() {
         const source = audioCtx.createBufferSource();
         source.buffer = stopBuffer;
@@ -292,6 +298,12 @@
       function coin_audio() {
         const source = audioCtx.createBufferSource();
         source.buffer = coinBuffer;
+        source.connect(audioCtx.destination);
+        source.start(0);
+      }
+      function start_audio() {
+        const source = audioCtx.createBufferSource();
+        source.buffer = startBuffer;
         source.connect(audioCtx.destination);
         source.start(0);
       }
@@ -490,6 +502,7 @@
               if (audioCtx.state === "suspended") {
                 await audioCtx.resume();
               }
+              start_audio();
               updateCoins(A - 1);
               document.querySelectorAll(".a").forEach(el => {
                 el.classList.add("next");
