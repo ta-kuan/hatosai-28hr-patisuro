@@ -313,7 +313,6 @@
         const currentCount = currentCoins.length;
         if (newA > currentCount) {
           for (let i = currentCount + 1; i <= newA; i++) {
-            coin_audio();
             const original = document.getElementById('parent_coin');
             const clone = original.cloneNode(true);
             const bottomValue = i * 1.2 + 1;
@@ -392,6 +391,7 @@
               break;
           }
           for (let i = 0; i < plus; i++) {
+              coin_audio();
               updateCoins(A + 1);
               await new Promise(resolve => setTimeout(resolve, time));
           }
@@ -448,6 +448,7 @@
               break;
           }
           for (let i = 0; i < plus; i++) {
+              coin_audio();
               updateCoins(A + 1);
               await new Promise(resolve => setTimeout(resolve, time));
           }
@@ -476,6 +477,7 @@
               break;
           }
           for (let i = 0; i < plus; i++) {
+              coin_audio();
               updateCoins(A + 1);
               await new Promise(resolve => setTimeout(resolve, time));
           }
