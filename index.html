@@ -493,11 +493,11 @@
               if (!stopBuffer) {
                 await loadStopSound();
               }
-              if (audioCtx.state === "suspended") {
-                await audioCtx.resume();
-              }
               if (!coinBuffer) {
                 await loadCoinSound();
+              }
+              if (!startBuffer) {
+                await loadStartSound();
               }
               if (audioCtx.state === "suspended") {
                 await audioCtx.resume();
