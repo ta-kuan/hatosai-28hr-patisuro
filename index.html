@@ -273,6 +273,9 @@
       let stopBuffer;
       let coinBuffer;
       let startBuffer;
+      let syoSBuffer;
+      let tyuSBuffer;
+      let nomalABuffer;
       let button = 0;
       async function loadStopSound() {
         const res = await fetch("srot_stop.mp3");
@@ -286,6 +289,21 @@
       }
       async function loadStartSound() {
         const res = await fetch("srot_start.wav");
+        const arrayBuffer = await res.arrayBuffer();
+        startBuffer = await audioCtx.decodeAudioData(arrayBuffer);
+      }
+      async function loadsyoSSound() {
+        const res = await fetch("小スタート.mp3");
+        const arrayBuffer = await res.arrayBuffer();
+        startBuffer = await audioCtx.decodeAudioData(arrayBuffer);
+      }
+      async function loadtyuSSound() {
+        const res = await fetch("中スタート.mp3");
+        const arrayBuffer = await res.arrayBuffer();
+        startBuffer = await audioCtx.decodeAudioData(arrayBuffer);
+      }
+      async function loadnomalASound() {
+        const res = await fetch("通常当たり.mp3");
         const arrayBuffer = await res.arrayBuffer();
         startBuffer = await audioCtx.decodeAudioData(arrayBuffer);
       }
@@ -304,6 +322,24 @@
       function start_audio() {
         const source = audioCtx.createBufferSource();
         source.buffer = startBuffer;
+        source.connect(audioCtx.destination);
+        source.start(0);
+      }
+      function syoS_audio() {
+        const source = audioCtx.createBufferSource();
+        source.buffer = syoSBuffer;
+        source.connect(audioCtx.destination);
+        source.start(0);
+      }
+      function tyuS_audio() {
+        const source = audioCtx.createBufferSource();
+        source.buffer = tyuSBuffer;
+        source.connect(audioCtx.destination);
+        source.start(0);
+      }
+      function nomalA_audio() {
+        const source = audioCtx.createBufferSource();
+        source.buffer = nomalABuffer;
         source.connect(audioCtx.destination);
         source.start(0);
       }
@@ -499,6 +535,15 @@
                 await loadCoinSound();
               }
               if (!startBuffer) {
+                await loadStartSound();
+              }
+              if (!syoSBuffer) {
+                await loadStartSound();
+              }
+              if (!tyuSBuffer) {
+                await loadStartSound();
+              }
+              if (!nomalABuffer) {
                 await loadStartSound();
               }
               if (audioCtx.state === "suspended") {
