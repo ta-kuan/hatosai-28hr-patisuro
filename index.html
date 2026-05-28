@@ -8,8 +8,8 @@
     <title>スロット - 28HR</title>
     <style>
       @font-face {
-        font-family: 'dot';
-        src: url('Dot.ttf') format('truetype');
+        font-family: "dot";
+        src: url("Dot.ttf") format("truetype");
       }
       body {
         touch-action: manipulation;
@@ -525,6 +525,7 @@
           }
         }
       }
+      function slide() {}
       window.onkeydown = async (e) => {
         if (e.code === "Space") {
           if (button === 0) {
@@ -549,7 +550,6 @@
                 nizi.play();
                 kaku = 1;
                 text.textContent = "";
-                text.classList.add("ani");
               } else if (E > 1 && E <= 40) {
                 playSingle(startBuffer);
                 aka.classList.add("off");
@@ -561,7 +561,6 @@
                 nizi.pause();
                 kaku = 2;
                 text.textContent = "コイン２倍！！";
-                text.classList.add("ani");
               } else if (E > 40 && E <= 80) {
                 playSingle(startBuffer);
                 aka.classList.add("off");
@@ -573,7 +572,6 @@
                 nizi.pause();
                 kaku = 3;
                 text.textContent = "７リーチ！！！";
-                text.classList.add("ani");
               } else if (E > 5 && E <= 9) {
                 playSingle(tyuSBuffer);
                 aka.classList.remove("off");
@@ -585,7 +583,6 @@
                 nizi.pause();
                 kaku = 4;
                 text.textContent = "";
-                text.classList.add("ani");
               } else if (E > 9 && E <= 19) {
                 playSingle(syoSBuffer);
                 aka.classList.add("off");
@@ -596,7 +593,6 @@
                 nizi.pause();
                 kaku = 0;
                 text.textContent = "";
-                text.classList.remove("ani");
               } else {
                 playSingle(startBuffer);
                 aka.classList.add("off");
@@ -607,7 +603,6 @@
                 nizi.pause();
                 kaku = 0;
                 text.textContent = "";
-                text.classList.remove("ani");
               }
               updateCoins(A - 1);
               document.querySelectorAll(".a").forEach(el => {
