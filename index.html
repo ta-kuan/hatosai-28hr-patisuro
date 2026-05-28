@@ -553,6 +553,7 @@
                 kin.pause(); 
                 nizi.play();
                 kaku = 1;
+                text.textContent = "";
                 text.classList.add("ani");
               } else if (E > 1 && E <= 40) {
                 playSingle(startBuffer);
@@ -588,6 +589,7 @@
                 kin.pause(); 
                 nizi.pause();
                 kaku = 4;
+                text.textContent = "";
                 text.classList.add("ani");
               } else if (E > 9 && E <= 19) {
                 playSingle(syoSBuffer);
@@ -598,6 +600,7 @@
                 kin.pause(); 
                 nizi.pause();
                 kaku = 0;
+                text.textContent = "";
                 text.classList.remove("ani");
               } else {
                 playSingle(startBuffer);
@@ -608,6 +611,7 @@
                 kin.pause(); 
                 nizi.pause();
                 kaku = 0;
+                text.textContent = "";
                 text.classList.remove("ani");
               }
               updateCoins(A - 1);
