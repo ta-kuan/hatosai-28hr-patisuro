@@ -285,7 +285,7 @@
         return await audioCtx.decodeAudioData(arrayBuffer);
       }
       async function loadAllSounds() {
-        [stopBuffer,coinBuffer,startBuffer,syoSBuffer,tyuSBuffer,nomalABuffer] = await Promise.all([loadSound("srot_stop.mp3"),loadSound("coin.mp3"),loadSound("start.mp3"),loadSound("syo.mp3"),loadSound("tyu.mp3"),loadSound("nomalA.mp3")]);
+        [stopBuffer,coinBuffer,startBuffer,syoSBuffer,tyuSBuffer,nomalABuffer] = await Promise.all([loadSound("srot_stop.mp3"),loadSound("coin.mp3"),loadSound("srot_start.mp3"),loadSound("小スタート.mp3"),loadSound("中スタート.mp3"),loadSound("通常当たり.mp3")]);
       }
       loadAllSounds();
       function playOverlap(buffer) {
