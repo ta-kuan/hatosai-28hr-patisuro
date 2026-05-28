@@ -641,7 +641,6 @@
                 kaku = 3;
                 text.textContent = "７リーチ！！！";
                 text.classList.remove("off");
-                lm = 1;
                 l_anis.forEach(a => a.pause());
                 l_anis.forEach(a => a.currentTime = 900);
                 lr = [4,3,2];
@@ -652,6 +651,7 @@
                 lm = 1;
                 cm = 1;
                 slide();
+                lm = 1;
               } else if (E > 5 && E <= 9) {
                 playSingle(tyuSBuffer);
                 aka.classList.remove("off");
