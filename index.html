@@ -191,9 +191,9 @@
   </head>
   <body>
     <div class="v">
-      <video class="aka off" src="赤.mp4"></video>
-      <video class="kin off" src="金.mp4"></video>
-      <video class="nizi off" src="虹.mp4"></video>
+      <video class="aka off" src="赤.mp4" loop></video>
+      <video class="kin off" src="金.mp4" loop></video>
+      <video class="nizi off" src="虹.mp4" loop></video>
     </dev>
     <div class="srot">
       <div class="mark">
@@ -259,6 +259,9 @@
       const r5 = document.querySelector(".r5");
       const r6 = document.querySelector(".r6");
       const bt = document.querySelector(".bt");
+      const aka = document.querySelector(".aka");
+      const kin = document.querySelector(".kin");
+      const nizi = document.querySelector(".nizi");
       let lr = [0,0,0];
       let lm = 1;
       let cr = [0,0,0];
@@ -289,6 +292,9 @@
       let singleSource = null;
       let button = 0;
       let E = Math.floor(Math.random() * 100) + 1;
+      let akaN = 0;
+      let kinN = 0;
+      let niziN = 0;
       async function loadSound(path) {
         const res = await fetch(path);
         const arrayBuffer = await res.arrayBuffer();
@@ -514,16 +520,74 @@
               }
               if (E <= 1) {
                 playSingle(startBuffer);
+                aka.classList.add("off");
+                kin.classList.add("off");
+                nizi.classList.remove("off");
+                nizi.currentTime = 0;
+                aka.pause(); 
+                kin.pause(); 
+                nizi.play();
+                akaN = 0;
+                kinN = 0;
+                niziN = 1;
               } else if (E > 1 && E <= 3) {
                 playSingle(startBuffer);
+                aka.classList.add("off");
+                kin.classList.remove("off");
+                nizi.classList.add("off");
+                kin.currentTime = 0;
+                aka.pause(); 
+                kin.play(); 
+                nizi.pause();
+                akaN = 0;
+                kinN = 1;
+                niziN = 0;
               } else if (E > 3 && E <= 5) {
                 playSingle(startBuffer);
+                aka.classList.add("off");
+                kin.classList.remove("off");
+                nizi.classList.add("off");
+                kin.currentTime = 0;
+                aka.pause(); 
+                kin.play(); 
+                nizi.pause();
+                akaN = 0;
+                kinN = 1;
+                niziN = 0;
               } else if (E > 5 && E <= 9) {
                 playSingle(tyuSBuffer);
+                aka.classList.remove("off");
+                kin.classList.add("off");
+                nizi.classList.add("off");
+                aka.currentTime = 0;
+                aka.play(); 
+                kin.pause(); 
+                nizi.pause();
+                akaN = 1;
+                kinN = 0;
+                niziN = 0; 
               } else if (E > 9 && E <= 19) {
                 playSingle(syoSBuffer);
+                aka.classList.add("off");
+                kin.classList.add("off");
+                nizi.classList.add("off");
+                aka.pause(); 
+                kin.pause(); 
+                nizi.pause();
+                akaN = 0;
+                kinN = 0;
+                niziN = 0;
               } else {
                 playSingle(startBuffer);
+                aka.classList.add("off");
+                kin.classList.add("off");
+                nizi.classList.add("off");
+                aka.pause(); 
+                kin.pause(); 
+                nizi.pause();
+                akaN = 0;
+                kinN = 0;
+                niziN = 0;
               }
               updateCoins(A - 1);
               document.querySelectorAll(".a").forEach(el => {
