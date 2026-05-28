@@ -535,7 +535,11 @@
         text.classList.remove("ani");
         await sleep(1000);
         text.classList.add("ani");
-        lm = 0;
+        if (E > 3 && E <= 80) {
+          lm = 1;
+        } else {
+          lm = 0;
+        }
       }
       window.onkeydown = async (e) => {
         if (e.code === "Space") {
@@ -651,7 +655,6 @@
                 lm = 1;
                 cm = 1;
                 slide();
-                lm = 1;
               } else if (E > 5 && E <= 9) {
                 playSingle(tyuSBuffer);
                 aka.classList.remove("off");
