@@ -564,7 +564,7 @@
                 text.classList.remove("off");
                 lm = 1;
                 slide();
-              } else if (E > 1 && E <= 40) {
+              } else if (E > 1 && E <= 3) {
                 playSingle(startBuffer);
                 aka.classList.add("off");
                 kin.classList.remove("off");
@@ -578,7 +578,7 @@
                 text.classList.remove("off");
                 lm = 1;
                 slide();
-              } else if (E > 40 && E <= 80) {
+              } else if (E > 3 && E <= 80) {
                 playSingle(startBuffer);
                 aka.classList.add("off");
                 kin.classList.remove("off");
@@ -591,6 +591,13 @@
                 text.textContent = "７リーチ！！！";
                 text.classList.remove("off");
                 lm = 1;
+                l_anis.forEach(a => a.currentTime = 900);
+                lr = [4,3,2];
+                c_anis.forEach(a => a.currentTime = 1100);
+                cr = [4,3,5];
+                button += 2;
+                lm = 1;
+                cm = 1;
                 slide();
               } else if (E > 5 && E <= 9) {
                 playSingle(tyuSBuffer);
