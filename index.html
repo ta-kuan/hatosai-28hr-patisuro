@@ -531,6 +531,12 @@
           }
         }
       }
+      async function slide() {
+        text.classList.add("ani");
+        await sleep(1000);
+        text.classList.remove("ani");
+        lm = 0;
+      }
       window.onkeydown = async (e) => {
         if (e.code === "Space") {
           if (button === 0) {
@@ -557,10 +563,7 @@
                 text.textContent = "";
                 text.classList.remove("off");
                 lm = 1;
-                text.classList.add("ani");
-                await sleep(1000);
-                text.classList.remove("ani");
-                lm = 0;
+                slide();
               } else if (E > 1 && E <= 40) {
                 playSingle(startBuffer);
                 aka.classList.add("off");
@@ -574,10 +577,7 @@
                 text.textContent = "コイン２倍！！";
                 text.classList.remove("off");
                 lm = 1;
-                text.classList.add("ani");
-                await sleep(1000);
-                text.classList.remove("ani");
-                lm = 0;
+                slide();
               } else if (E > 40 && E <= 80) {
                 playSingle(startBuffer);
                 aka.classList.add("off");
@@ -591,10 +591,7 @@
                 text.textContent = "７リーチ！！！";
                 text.classList.remove("off");
                 lm = 1;
-                text.classList.add("ani");
-                await sleep(1000);
-                text.classList.remove("ani");
-                lm = 0;
+                slide();
               } else if (E > 5 && E <= 9) {
                 playSingle(tyuSBuffer);
                 aka.classList.remove("off");
@@ -608,10 +605,7 @@
                 text.textContent = "";
                 text.classList.remove("off");
                 lm = 1;
-                text.classList.add("ani");
-                await sleep(1000);
-                text.classList.remove("ani");
-                lm = 0;
+                slide();
               } else if (E > 9 && E <= 19) {
                 playSingle(syoSBuffer);
                 aka.classList.add("off");
