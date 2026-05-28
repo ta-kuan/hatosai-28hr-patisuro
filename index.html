@@ -276,73 +276,35 @@
       let syoSBuffer;
       let tyuSBuffer;
       let nomalABuffer;
+      let singleSource = null;
       let button = 0;
       let E = Math.floor(Math.random() * 100) + 1;
-      async function loadStopSound() {
-        const res = await fetch("srot_stop.mp3");
+      async function loadSound(path) {
+        const res = await fetch(path);
         const arrayBuffer = await res.arrayBuffer();
-        stopBuffer = await audioCtx.decodeAudioData(arrayBuffer);
+        return await audioCtx.decodeAudioData(arrayBuffer);
       }
-      async function loadCoinSound() {
-        const res = await fetch("coin.mp3");
-        const arrayBuffer = await res.arrayBuffer();
-        coinBuffer = await audioCtx.decodeAudioData(arrayBuffer);
+      async function loadAllSounds() {
+        [stopBuffer,coinBuffer,startBuffer,syoSBuffer,tyuSBuffer,nomalABuffer] = await Promise.all([loadSound("srot_stop.mp3"),loadSound("coin.mp3"),loadSound("start.mp3"),loadSound("syo.mp3"),loadSound("tyu.mp3"),loadSound("nomalA.mp3")]);
       }
-      async function loadStartSound() {
-        const res = await fetch("srot_start.wav");
-        const arrayBuffer = await res.arrayBuffer();
-        startBuffer = await audioCtx.decodeAudioData(arrayBuffer);
-      }
-      async function loadsyoSSound() {
-        const res = await fetch("小スタート.mp3");
-        const arrayBuffer = await res.arrayBuffer();
-        startBuffer = await audioCtx.decodeAudioData(arrayBuffer);
-      }
-      async function loadtyuSSound() {
-        const res = await fetch("中スタート.mp3");
-        const arrayBuffer = await res.arrayBuffer();
-        startBuffer = await audioCtx.decodeAudioData(arrayBuffer);
-      }
-      async function loadnomalASound() {
-        const res = await fetch("通常当たり.mp3");
-        const arrayBuffer = await res.arrayBuffer();
-        startBuffer = await audioCtx.decodeAudioData(arrayBuffer);
-      }
-      function stop_audio() {
+      loadAllSounds();
+      function playOverlap(buffer) {
         const source = audioCtx.createBufferSource();
-        source.buffer = stopBuffer;
+        source.buffer = buffer;
         source.connect(audioCtx.destination);
-        source.start(0);
+        source.start();
       }
-      function coin_audio() {
+      function playSingle(buffer) {
+        if (singleSource) {
+          try {
+            singleSource.stop();
+          } catch {}
+        }
         const source = audioCtx.createBufferSource();
-        source.buffer = coinBuffer;
+        source.buffer = buffer;
         source.connect(audioCtx.destination);
-        source.start(0);
-      }
-      function start_audio() {
-        const source = audioCtx.createBufferSource();
-        source.buffer = startBuffer;
-        source.connect(audioCtx.destination);
-        source.start(0);
-      }
-      function syoS_audio() {
-        const source = audioCtx.createBufferSource();
-        source.buffer = syoSBuffer;
-        source.connect(audioCtx.destination);
-        source.start(0);
-      }
-      function tyuS_audio() {
-        const source = audioCtx.createBufferSource();
-        source.buffer = tyuSBuffer;
-        source.connect(audioCtx.destination);
-        source.start(0);
-      }
-      function nomalA_audio() {
-        const source = audioCtx.createBufferSource();
-        source.buffer = nomalABuffer;
-        source.connect(audioCtx.destination);
-        source.start(0);
+        source.start();
+        singleSource = source;
       }
       function updateCoins(newA) {
         if (newA < 0) newA = 0;
@@ -376,7 +338,7 @@
       //スイカ1,２８2,７3,ベル4,bar5,チェリー6
       async function check() {
         if (lr[0] === cr[0] && cr[0] === rr[0] && lr[0] >= 1 && lr[0] <= 6) {
-          nomalA_audio();
+          playSingle(nomalABuffer);
           document.querySelector(".suclt").classList.remove("off");
           document.querySelector(".succt").classList.remove("off");
           document.querySelector(".sucrt").classList.remove("off");
@@ -401,11 +363,12 @@
               break;
           }
           for (let i = 0; i < plus; i++) {
+              playOverlap(coinBuffer);
               updateCoins(A + 1);
               await new Promise(resolve => setTimeout(resolve, time));
           }
         } else if (lr[1] === cr[1] && cr[1] === rr[1] && lr[1] >= 1 && lr[1] <= 6) {
-          nomalA_audio();
+          playSingle(nomalABuffer);
           document.querySelector(".suclc").classList.remove("off");
           document.querySelector(".succc").classList.remove("off");
           document.querySelector(".sucrc").classList.remove("off");
@@ -430,12 +393,12 @@
               break;
           }
           for (let i = 0; i < plus; i++) {
-              coin_audio();
+              playOverlap(coinBuffer);
               updateCoins(A + 1);
               await new Promise(resolve => setTimeout(resolve, time));
           }
         } else if (lr[2] === cr[2] && cr[2] === rr[2] && lr[2] >= 1 && lr[2] <= 6) {
-          nomalA_audio();
+          playSingle(nomalABuffer);
           document.querySelector(".suclb").classList.remove("off");
           document.querySelector(".succb").classList.remove("off");
           document.querySelector(".sucrb").classList.remove("off");
@@ -460,11 +423,12 @@
               break;
           }
           for (let i = 0; i < plus; i++) {
+              playOverlap(coinBuffer);
               updateCoins(A + 1);
               await new Promise(resolve => setTimeout(resolve, time));
           }
         } else if (lr[0] === cr[1] && cr[1] === rr[2] && lr[0] >= 1 && lr[0] <= 6) {
-          nomalA_audio();
+          playSingle(nomalABuffer);
           document.querySelector(".suclt").classList.remove("off");
           document.querySelector(".succc").classList.remove("off");
           document.querySelector(".sucrb").classList.remove("off");
@@ -489,12 +453,12 @@
               break;
           }
           for (let i = 0; i < plus; i++) {
-              coin_audio();
+              playOverlap(coinBuffer);
               updateCoins(A + 1);
               await new Promise(resolve => setTimeout(resolve, time));
           }
         } else if (lr[2] === cr[1] && cr[1] === rr[0] && lr[2] >= 1 && lr[2] <= 6) {
-          nomalA_audio();
+          playSingle(nomalABuffer);
           document.querySelector(".suclb").classList.remove("off");
           document.querySelector(".succc").classList.remove("off");
           document.querySelector(".sucrt").classList.remove("off");
@@ -519,7 +483,7 @@
               break;
           }
           for (let i = 0; i < plus; i++) {
-              coin_audio();
+              playOverlap(coinBuffer);
               updateCoins(A + 1);
               await new Promise(resolve => setTimeout(resolve, time));
           }
@@ -535,39 +499,21 @@
                 start.classList.add("off");
                 C = 0;
               }
-              if (!stopBuffer) {
-                await loadStopSound();
-              }
-              if (!coinBuffer) {
-                await loadCoinSound();
-              }
-              if (!startBuffer) {
-                await loadStartSound();
-              }
-              if (!syoSBuffer) {
-                await loadStartSound();
-              }
-              if (!tyuSBuffer) {
-                await loadStartSound();
-              }
-              if (!nomalABuffer) {
-                await loadStartSound();
-              }
               if (audioCtx.state === "suspended") {
                 await audioCtx.resume();
               }
               if (E <= 1) {
-                start_audio();
+                playSingle(startBuffer);
               } else if (E > 1 && E <= 3) {
-                start_audio();
+                playSingle(startBuffer);
               } else if (E > 3 && E <= 5) {
-                start_audio();
+                playSingle(startBuffer);
               } else if (E > 5 && E <= 9) {
-                tyuS_audio();
+                playSingle(tyuSBuffer);
               } else if (E > 9 && E <= 19) {
-                syoS_audio();
+                playSingle(syoSBuffer);
               } else {
-                start_audio();
+                playSingle(startBuffer);
               }
               updateCoins(A - 1);
               document.querySelectorAll(".a").forEach(el => {
@@ -634,7 +580,7 @@
               button += 1;
             }
           } else if (button === 1 && lm === 0) {
-            stop_audio();
+            playOverlap(stopBuffer);
             lm = 1;
             const l1_ani = l1.getAnimations()[0];
             const l2_ani = l2.getAnimations()[0];
@@ -670,7 +616,7 @@
             }
             button += 1;
           } else if (button === 2 && cm === 0) {
-            stop_audio();
+            splayOverlap(stopBuffer);
             cm = 1;
             const c1_ani = c1.getAnimations()[0];
             const c2_ani = c2.getAnimations()[0];
@@ -706,7 +652,7 @@
             }
             button += 1;
           } else if (button === 3 && rm === 0) {
-            stop_audio();
+            playOverlap(stopBuffer);
             rm = 1;
             const r1_ani = r1.getAnimations()[0];
             const r2_ani = r2.getAnimations()[0];
