@@ -536,6 +536,9 @@
         if (e.code === "Space") {
           if (button === 0) {
             if (lm === 1 && cm === 1 && rm === 1 && spacem === 1 && A > 0) {
+              text.style.transition = "";
+              text.style.height = "40%";
+              text.style.transform = "translate(-50%,-50%)";
               E = Math.floor(Math.random() * 100) + 1;
               if (C === 1) {
                 document.querySelectorAll(".box").forEach(el => el.classList.remove("off"));
