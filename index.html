@@ -204,7 +204,12 @@
         transform: translate(-50%,-50%);
         width: 70%;
         height: 40%;
-        transition: transform 0.3s, width 0.3s, height 0.3s;
+        
+      }
+      .text.ani {
+        transition: transform 0.3s, width 0.3s;
+        height: 10%;
+        transform: translate(-50%,400%);
       }
     </style>
   </head>
@@ -526,20 +531,10 @@
           }
         }
       }
-      async function slide() {
-        text.style.transition = "";
-        await sleep(1000);
-        text.style.height = "10%";
-        text.style.transform = "translate(-50%,400%)";
-        lm = 0;
-      }
       window.onkeydown = async (e) => {
         if (e.code === "Space") {
           if (button === 0) {
             if (lm === 1 && cm === 1 && rm === 1 && spacem === 1 && A > 0) {
-              text.style.transition = "none";
-              text.style.height = "40%";
-              text.style.transform = "translate(-50%,-50%)";
               E = Math.floor(Math.random() * 100) + 1;
               if (C === 1) {
                 document.querySelectorAll(".box").forEach(el => el.classList.remove("off"));
@@ -562,7 +557,10 @@
                 text.textContent = "";
                 text.classList.remove("off");
                 lm = 1;
-                slide();
+                text.classList.add("ani");
+                await sleep(1000);
+                text.classList.remove("ani");
+                lm = 0;
               } else if (E > 1 && E <= 40) {
                 playSingle(startBuffer);
                 aka.classList.add("off");
@@ -576,7 +574,10 @@
                 text.textContent = "コイン２倍！！";
                 text.classList.remove("off");
                 lm = 1;
-                slide();
+                text.classList.add("ani");
+                await sleep(1000);
+                text.classList.remove("ani");
+                lm = 0;
               } else if (E > 40 && E <= 80) {
                 playSingle(startBuffer);
                 aka.classList.add("off");
@@ -590,7 +591,10 @@
                 text.textContent = "７リーチ！！！";
                 text.classList.remove("off");
                 lm = 1;
-                slide();
+                text.classList.add("ani");
+                await sleep(1000);
+                text.classList.remove("ani");
+                lm = 0;
               } else if (E > 5 && E <= 9) {
                 playSingle(tyuSBuffer);
                 aka.classList.remove("off");
@@ -604,7 +608,10 @@
                 text.textContent = "";
                 text.classList.remove("off");
                 lm = 1;
-                slide();
+                text.classList.add("ani");
+                await sleep(1000);
+                text.classList.remove("ani");
+                lm = 0;
               } else if (E > 9 && E <= 19) {
                 playSingle(syoSBuffer);
                 aka.classList.add("off");
