@@ -17,7 +17,7 @@
         overflow: hidden;
       }
       .off {
-        display: none;
+        display: none !important;
       }
       .srot {
         position: relative;
@@ -530,6 +530,7 @@
         await sleep(1000);
         text.style.height = "10%";
         text.style.transform = "translate(-50%,400%)";
+        lm = 0;
       }
       window.onkeydown = async (e) => {
         if (e.code === "Space") {
@@ -555,6 +556,9 @@
                 nizi.play();
                 kaku = 1;
                 text.textContent = "";
+                text.classList.remove("off");
+                lm = 1;
+                slide();
               } else if (E > 1 && E <= 40) {
                 playSingle(startBuffer);
                 aka.classList.add("off");
@@ -566,6 +570,9 @@
                 nizi.pause();
                 kaku = 2;
                 text.textContent = "コイン２倍！！";
+                text.classList.remove("off");
+                lm = 1;
+                slide();
               } else if (E > 40 && E <= 80) {
                 playSingle(startBuffer);
                 aka.classList.add("off");
@@ -577,6 +584,9 @@
                 nizi.pause();
                 kaku = 3;
                 text.textContent = "７リーチ！！！";
+                text.classList.remove("off");
+                lm = 1;
+                slide();
               } else if (E > 5 && E <= 9) {
                 playSingle(tyuSBuffer);
                 aka.classList.remove("off");
@@ -588,6 +598,9 @@
                 nizi.pause();
                 kaku = 4;
                 text.textContent = "";
+                text.classList.remove("off");
+                lm = 1;
+                slide();
               } else if (E > 9 && E <= 19) {
                 playSingle(syoSBuffer);
                 aka.classList.add("off");
@@ -598,6 +611,7 @@
                 nizi.pause();
                 kaku = 0;
                 text.textContent = "";
+                text.classList.add("off");
               } else {
                 playSingle(startBuffer);
                 aka.classList.add("off");
@@ -608,6 +622,7 @@
                 nizi.pause();
                 kaku = 0;
                 text.textContent = "";
+                text.classList.add("off");
               }
               updateCoins(A - 1);
               document.querySelectorAll(".a").forEach(el => {
