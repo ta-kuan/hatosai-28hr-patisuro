@@ -532,9 +532,9 @@
         }
       }
       async function slide() {
-        text.classList.add("ani");
-        await sleep(1000);
         text.classList.remove("ani");
+        await sleep(1000);
+        text.classList.add("ani");
         lm = 0;
       }
       window.onkeydown = async (e) => {
