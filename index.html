@@ -315,6 +315,7 @@
       let button = 0;
       let E = Math.floor(Math.random() * 100) + 1;
       let kaku = 0;
+      const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
       async function loadSound(path) {
         const res = await fetch(path);
         const arrayBuffer = await res.arrayBuffer();
@@ -525,7 +526,11 @@
           }
         }
       }
-      function slide() {}
+      async function slide() {
+        await sleep(1000);
+        text.style.height = "10%";
+        text.style.transform = "translate(-50%,400%)";
+      }
       window.onkeydown = async (e) => {
         if (e.code === "Space") {
           if (button === 0) {
