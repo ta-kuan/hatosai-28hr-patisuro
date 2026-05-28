@@ -616,6 +616,7 @@
                 kaku = 0;
                 text.textContent = "";
                 text.classList.add("off");
+                lm = 0;
               } else {
                 playSingle(startBuffer);
                 aka.classList.add("off");
@@ -627,6 +628,7 @@
                 kaku = 0;
                 text.textContent = "";
                 text.classList.add("off");
+                lm = 0;
               }
               updateCoins(A - 1);
               document.querySelectorAll(".a").forEach(el => {
@@ -647,7 +649,6 @@
               document.querySelectorAll(".f").forEach(el => {
                 el.classList.add("next");
               });
-              lm = 0;
               cm = 0;
               rm = 0;
               const l1_ani = l1.getAnimations()[0];
