@@ -540,6 +540,7 @@
         } else {
           lm = 0;
         }
+        button += 1;
       }
       window.onkeydown = async (e) => {
         if (e.code === "Space") {
@@ -681,6 +682,7 @@
                 text.textContent = "";
                 text.classList.add("off");
                 lm = 0;
+                button += 1;
               } else {
                 playSingle(startBuffer);
                 aka.classList.add("off");
@@ -693,6 +695,7 @@
                 text.textContent = "";
                 text.classList.add("off");
                 lm = 0;
+                button += 1;
               }
               spacem = 0;
               document.querySelector(".suclt").classList.add("off");
@@ -704,7 +707,6 @@
               document.querySelector(".sucrt").classList.add("off");
               document.querySelector(".sucrc").classList.add("off");
               document.querySelector(".sucrb").classList.add("off");
-              button += 1;
             }
           } else if (button === 1 && lm === 0) {
             playOverlap(stopBuffer);
