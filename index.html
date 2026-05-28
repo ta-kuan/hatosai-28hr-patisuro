@@ -535,7 +535,7 @@
         text.classList.remove("ani");
         await sleep(1000);
         text.classList.add("ani");
-        if (E > 3 && E <= 80) {
+        if (E > 3 && E <= 5) {
           lm = 1;
         } else {
           lm = 0;
@@ -633,7 +633,7 @@
                 text.classList.remove("off");
                 lm = 1;
                 slide();
-              } else if (E > 3 && E <= 80) {
+              } else if (E > 3 && E <= 5) {
                 playSingle(startBuffer);
                 aka.classList.add("off");
                 kin.classList.remove("off");
