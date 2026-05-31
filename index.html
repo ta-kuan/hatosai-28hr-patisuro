@@ -612,7 +612,7 @@
               l_anis.forEach(a => a.play());
               c_anis.forEach(a => a.play());
               r_anis.forEach(a => a.play());
-              if (E !== 1) boxes.forEach((box, index) => {box.src = originalSrcs[index];});
+              if (E !== 1) box.forEach((index) => {box.src = originalSrcs[index];});
               if (E === 1) {
                 playSingle(startBuffer);
                 aka.classList.add("off");
