@@ -625,7 +625,7 @@
                 kaku = 1;
                 text.textContent = "オール７！！！";
                 text.classList.remove("off");
-                boxes.forEach(box => {box.src = "srot7.png";});
+                document.querySelectorAll(".box").forEach(box => {box.src = "srot7.png";});
                 lm = 1;
                 slide();
               } else if (E > 1 && E <= 3) {
