@@ -396,13 +396,9 @@
         A = newA;
       }
       async function bonus() {
-        const bonusEnd = Date.now() + 5000;
-        bonus.end = bonusEnd;
         bo = 1;
         await sleep(5000);
-        if (bonus.end === bonusEnd) {
-          bo = 0;
-        }
+        bo = 0;
       }
       //スイカ1[3],２８2[1],７3,ベル4[4],bar5,チェリー6[2]
       async function check() {
