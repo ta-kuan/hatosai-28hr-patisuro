@@ -332,6 +332,7 @@
       const srcs = ["srot7.png","srotberu.png","srotbar.png","srottyeri.png","srotsuika.png","srot28.png","srottyeri.png","srotbar.png","srot7.png","srotberu.png","srotsuika.png","srot28.png","srotsuika.png","srotberu.png","srot7.png","srotbar.png","srottyeri.png","srot28.png"];
       let mati = 0;
       let goal_number;
+      const goal = document.querySelector(".goal");
       async function loadSound(path) {
         const res = await fetch(path);
         const arrayBuffer = await res.arrayBuffer();
