@@ -557,8 +557,10 @@
       }
       async function slide() {
         text.classList.remove("ani");
+        goal.classList.remove("ani");
         await sleep(1000);
         text.classList.add("ani");
+        goal.classList.add("ani");
         await sleep(400);
         if (E > 4 && E <= 7) {
           lm = 1;
