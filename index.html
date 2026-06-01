@@ -277,7 +277,7 @@
       <span class="start"></span>
     </div>
     <div class="text off"></div>
-    <div class="goal off"></div>
+    <img src="" class="goal off"></img>
     <script type="module">
       const box = document.querySelector(".box");
       const l1 = document.querySelector(".l1");
@@ -692,13 +692,13 @@
                 goal.classList.remove("off");
                 goal_number = Math.floor(Math.random() * 4) + 1;
                 if (goal_number === 1) {
-                  goal.style.backgroundImage = "url(srot28.png)";
+                  goal.src = "srot28.png";
                 } else if (goal_number === 2) {
-                  goal.style.backgroundImage = "url(sorttyeri.png)";
+                  goal.src = "sorttyeri.png";
                 } else if (goal_number === 3) {
-                  goal.style.backgroundImage = "url(sortsuika.png)";
+                  goal.src = "sortsuika.png";
                 } else if (goal_number === 4) {
-                  goal.style.backgroundImage = "url(sortberu.png)";
+                  goal.src = "sortberu.png";
                 }
                 playSingle(tyuSBuffer);
                 aka.classList.remove("off");
