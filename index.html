@@ -218,6 +218,7 @@
         background: rgb(250,250,0);
         transform: translate(-50%,-50%);
         height: 80%;
+        aspect-ratio: 1 / 1;
       }
     </style>
   </head>
@@ -271,7 +272,7 @@
       <span class="start"></span>
     </div>
     <div class="text off">
-      <img src="" class="goal off">
+      <div class="goal off"></div>
     </div>
     <script type="module">
       const box = document.querySelector(".box");
@@ -684,13 +685,13 @@
               } else if (E > 7 && E <= 13) {
                 goal_number = Math.floor(Math.random() * 4) + 1;
                 if (goal_number === 1) {
-                  goal.src = "sort28";
+                  goal.style.backgroundImage = "url("srot28.png")";
                 } else if (goal_number === 2) {
-                  goal.src = "sorttyeri";
+                  goal.style.backgroundImage = "url("sorttyeri.png")";
                 } else if (goal_number === 3) {
-                  goal.src = "sortsuika";
+                  goal.style.backgroundImage = "url("sortsuika.png")";
                 } else if (goal_number === 4) {
-                  goal.src = "sortberu";
+                  goal.style.backgroundImage = "url("sortberu.png")";
                 }
                 goal.classList.remove("off");
                 playSingle(tyuSBuffer);
