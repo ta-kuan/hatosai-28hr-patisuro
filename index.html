@@ -338,6 +338,7 @@
       let mati = 0;
       let goal_number;
       const goal = document.querySelector(".goal");
+      let bo = 0;
       async function loadSound(path) {
         const res = await fetch(path);
         const arrayBuffer = await res.arrayBuffer();
@@ -395,7 +396,9 @@
         A = newA;
       }
       async function bonus() {
-        
+        bo = 1;
+        await sleep(5000);
+        bo = 0;
       }
       //スイカ1[3],２８2[1],７3,ベル4[4],bar5,チェリー6[2]
       async function check() {
@@ -580,7 +583,6 @@
         if (e.code === "Space" && mati === 0) {
           if (button === 0) {
             if (lm === 1 && cm === 1 && rm === 1 && spacem === 1 && A > 0) {
-              E = Math.floor(Math.random() * 200) + 1;
               if (C === 1) {
                 document.querySelectorAll(".box").forEach(el => el.classList.remove("off"));
                 start.classList.add("off");
@@ -589,7 +591,6 @@
               if (audioCtx.state === "suspended") {
                 await audioCtx.resume();
               }
-              updateCoins(A - 1);
               document.querySelectorAll(".a").forEach(el => {
                 el.classList.add("next");
               });
@@ -640,114 +641,118 @@
               l_anis.forEach(a => a.play());
               c_anis.forEach(a => a.play());
               r_anis.forEach(a => a.play());
-              if (E !== 1) document.querySelectorAll(".box").forEach((box, index) => {box.src = srcs[index];});
-              if (E === 1) {
-                goal.classList.add("off");
-                playSingle(startBuffer);
-                aka.classList.add("off");
-                kin.classList.add("off");
-                nizi.classList.remove("off");
-                nizi.currentTime = 0;
-                aka.pause(); 
-                kin.pause(); 
-                nizi.play();
-                kaku = 1;
-                text.textContent = "オール７！！！";
-                text.classList.remove("off");
-                document.querySelectorAll(".box").forEach(box => {box.src = "srot7.png";});
-                lm = 1;
-                slide();
-              } else if (E > 1 && E <= 4) {
-                goal.classList.add("off");
-                playSingle(startBuffer);
-                aka.classList.add("off");
-                kin.classList.remove("off");
-                nizi.classList.add("off");
-                kin.currentTime = 0;
-                aka.pause(); 
-                kin.play(); 
-                nizi.pause();
-                kaku = 2;
-                text.textContent = "コイン２倍！！";
-                text.classList.remove("off");
-                lm = 1;
-                slide();
-              } else if (E > 4 && E <= 7) {
-                goal.classList.add("off");
-                playSingle(startBuffer);
-                aka.classList.add("off");
-                kin.classList.remove("off");
-                nizi.classList.add("off");
-                kin.currentTime = 0;
-                aka.pause(); 
-                kin.play(); 
-                nizi.pause();
-                kaku = 3;
-                text.textContent = "７リーチ！！！";
-                text.classList.remove("off");
-                l_anis.forEach(a => a.pause());
-                l_anis.forEach(a => a.currentTime = 900);
-                lr = [4,3,2];
-                c_anis.forEach(a => a.pause());
-                c_anis.forEach(a => a.currentTime = 1100);
-                cr = [4,3,5];
-                button += 2;
-                lm = 1;
-                cm = 1;
-                slide();
-              } else if (E > 7 && E <= 13) {
-                goal.classList.remove("off");
-                goal_number = Math.floor(Math.random() * 4) + 1;
-                if (goal_number === 1) {
-                  goal.src = "srot28.png";
-                } else if (goal_number === 2) {
-                  goal.src = "srottyeri.png";
-                } else if (goal_number === 3) {
-                  goal.src = "srotsuika.png";
-                } else if (goal_number === 4) {
-                  goal.src = "srotberu.png";
+              if (bo !== 1) {
+                updateCoins(A - 1);
+                E = Math.floor(Math.random() * 200) + 1;
+                if (E !== 1) document.querySelectorAll(".box").forEach((box, index) => {box.src = srcs[index];});
+                if (E === 1) {
+                  goal.classList.add("off");
+                  playSingle(startBuffer);
+                  aka.classList.add("off");
+                  kin.classList.add("off");
+                  nizi.classList.remove("off");
+                  nizi.currentTime = 0;
+                  aka.pause(); 
+                  kin.pause(); 
+                  nizi.play();
+                  kaku = 1;
+                  text.textContent = "オール７！！！";
+                  text.classList.remove("off");
+                  document.querySelectorAll(".box").forEach(box => {box.src = "srot7.png";});
+                  lm = 1;
+                  slide();
+                } else if (E > 1 && E <= 4) {
+                  goal.classList.add("off");
+                  playSingle(startBuffer);
+                  aka.classList.add("off");
+                  kin.classList.remove("off");
+                  nizi.classList.add("off");
+                  kin.currentTime = 0;
+                  aka.pause(); 
+                  kin.play(); 
+                  nizi.pause();
+                  kaku = 2;
+                  text.textContent = "コイン２倍！！";
+                  text.classList.remove("off");
+                  lm = 1;
+                  slide();
+                } else if (E > 4 && E <= 7) {
+                  goal.classList.add("off");
+                  playSingle(startBuffer);
+                  aka.classList.add("off");
+                  kin.classList.remove("off");
+                  nizi.classList.add("off");
+                  kin.currentTime = 0;
+                  aka.pause(); 
+                  kin.play(); 
+                  nizi.pause();
+                  kaku = 3;
+                  text.textContent = "７リーチ！！！";
+                  text.classList.remove("off");
+                  l_anis.forEach(a => a.pause());
+                  l_anis.forEach(a => a.currentTime = 900);
+                  lr = [4,3,2];
+                  c_anis.forEach(a => a.pause());
+                  c_anis.forEach(a => a.currentTime = 1100);
+                  cr = [4,3,5];
+                  button += 2;
+                  lm = 1;
+                  cm = 1;
+                  slide();
+                } else if (E > 7 && E <= 13) {
+                  goal.classList.remove("off");
+                  goal_number = Math.floor(Math.random() * 4) + 1;
+                  if (goal_number === 1) {
+                    goal.src = "srot28.png";
+                  } else if (goal_number === 2) {
+                    goal.src = "srottyeri.png";
+                  } else if (goal_number === 3) {
+                    goal.src = "srotsuika.png";
+                  } else if (goal_number === 4) {
+                    goal.src = "srotberu.png";
+                  }
+                  playSingle(tyuSBuffer);
+                  aka.classList.remove("off");
+                  kin.classList.add("off");
+                  nizi.classList.add("off");
+                  aka.currentTime = 0;
+                  aka.play(); 
+                  kin.pause(); 
+                  nizi.pause();
+                  kaku = 4;
+                  text.textContent = "　を揃えろ！！";
+                  text.classList.remove("off");
+                  lm = 1;
+                  slide();
+                } else if (E > 13 && E <= 33) {
+                  goal.classList.add("off");
+                  playSingle(syoSBuffer);
+                  aka.classList.add("off");
+                  kin.classList.add("off");
+                  nizi.classList.add("off");
+                  aka.pause(); 
+                  kin.pause(); 
+                  nizi.pause();
+                  kaku = 0;
+                  text.textContent = "";
+                  text.classList.add("off");
+                  lm = 0;
+                  button += 1;
+                } else {
+                  goal.classList.add("off");
+                  playSingle(startBuffer);
+                  aka.classList.add("off");
+                  kin.classList.add("off");
+                  nizi.classList.add("off");
+                  aka.pause(); 
+                  kin.pause(); 
+                  nizi.pause();
+                  kaku = 0;
+                  text.textContent = "";
+                  text.classList.add("off");
+                  lm = 0;
+                  button += 1;
                 }
-                playSingle(tyuSBuffer);
-                aka.classList.remove("off");
-                kin.classList.add("off");
-                nizi.classList.add("off");
-                aka.currentTime = 0;
-                aka.play(); 
-                kin.pause(); 
-                nizi.pause();
-                kaku = 4;
-                text.textContent = "　を揃えろ！！";
-                text.classList.remove("off");
-                lm = 1;
-                slide();
-              } else if (E > 13 && E <= 33) {
-                goal.classList.add("off");
-                playSingle(syoSBuffer);
-                aka.classList.add("off");
-                kin.classList.add("off");
-                nizi.classList.add("off");
-                aka.pause(); 
-                kin.pause(); 
-                nizi.pause();
-                kaku = 0;
-                text.textContent = "";
-                text.classList.add("off");
-                lm = 0;
-                button += 1;
-              } else {
-                goal.classList.add("off");
-                playSingle(startBuffer);
-                aka.classList.add("off");
-                kin.classList.add("off");
-                nizi.classList.add("off");
-                aka.pause(); 
-                kin.pause(); 
-                nizi.pause();
-                kaku = 0;
-                text.textContent = "";
-                text.classList.add("off");
-                lm = 0;
-                button += 1;
               }
               spacem = 0;
               document.querySelector(".suclt").classList.add("off");
