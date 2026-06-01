@@ -318,7 +318,7 @@
       let nomalABuffer;
       let singleSource = null;
       let button = 0;
-      let E = Math.floor(Math.random() * 100) + 1;
+      let E = Math.floor(Math.random() * 200) + 1;
       let kaku = 0;
       const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
       const srcs = ["srot7.png","srotberu.png","srotbar.png","srottyeri.png","srotsuika.png","srot28.png","srottyeri.png","srotbar.png","srot7.png","srotberu.png","srotsuika.png","srot28.png","srotsuika.png","srotberu.png","srot7.png","srotbar.png","srottyeri.png","srot28.png"];
@@ -555,7 +555,7 @@
         if (e.code === "Space" && mati === 0) {
           if (button === 0) {
             if (lm === 1 && cm === 1 && rm === 1 && spacem === 1 && A > 0) {
-              E = Math.floor(Math.random() * 100) + 1;
+              E = Math.floor(Math.random() * 200) + 1;
               if (C === 1) {
                 document.querySelectorAll(".box").forEach(el => el.classList.remove("off"));
                 start.classList.add("off");
