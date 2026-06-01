@@ -322,6 +322,7 @@
       let kaku = 0;
       const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
       const srcs = ["srot7.png","srotberu.png","srotbar.png","srottyeri.png","srotsuika.png","srot28.png","srottyeri.png","srotbar.png","srot7.png","srotberu.png","srotsuika.png","srot28.png","srotsuika.png","srotberu.png","srot7.png","srotbar.png","srottyeri.png","srot28.png"];
+      let mati = 0;
       async function loadSound(path) {
         const res = await fetch(path);
         const arrayBuffer = await res.arrayBuffer();
@@ -380,6 +381,7 @@
       }
       //スイカ1,２８2,７3,ベル4,bar5,チェリー6
       async function check() {
+        mati = 1;
         if (lr[0] === cr[0] && cr[0] === rr[0] && lr[0] >= 1 && lr[0] <= 6) {
           playOverlap(nomalABuffer);
           document.querySelector(".suclt").classList.remove("off");
@@ -535,6 +537,7 @@
               await new Promise(resolve => setTimeout(resolve, time));
           }
         }
+        mati = 0;
       }
       async function slide() {
         text.classList.remove("ani");
@@ -549,7 +552,7 @@
         button += 1;
       }
       window.onkeydown = async (e) => {
-        if (e.code === "Space") {
+        if (e.code === "Space" && mati === 0) {
           if (button === 0) {
             if (lm === 1 && cm === 1 && rm === 1 && spacem === 1 && A > 0) {
               E = Math.floor(Math.random() * 100) + 1;
