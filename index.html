@@ -204,12 +204,19 @@
         transform: translate(-50%,-50%);
         width: 70%;
         height: 40%;
-        
       }
       .text.ani {
-        transition: transform 0.3s, width 0.3s;
+        transition: transform 0.3s, height 0.3s;
         height: 10%;
         transform: translate(-50%,400%);
+      }
+      .goal {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        background: rgb(250,250,0);
+        transform: translate(-50%,-50%);
+        height: 80%;
       }
     </style>
   </head>
@@ -263,6 +270,7 @@
       <span class="start"></span>
     </div>
     <div class="text off">
+      <img src="" class="goal off"></img>
     </div>
     <script type="module">
       const box = document.querySelector(".box");
@@ -323,6 +331,7 @@
       const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
       const srcs = ["srot7.png","srotberu.png","srotbar.png","srottyeri.png","srotsuika.png","srot28.png","srottyeri.png","srotbar.png","srot7.png","srotberu.png","srotsuika.png","srot28.png","srotsuika.png","srotberu.png","srot7.png","srotbar.png","srottyeri.png","srot28.png"];
       let mati = 0;
+      let goal_number;
       async function loadSound(path) {
         const res = await fetch(path);
         const arrayBuffer = await res.arrayBuffer();
@@ -617,6 +626,7 @@
               r_anis.forEach(a => a.play());
               if (E !== 1) document.querySelectorAll(".box").forEach((box, index) => {box.src = srcs[index];});
               if (E === 1) {
+                goal.classList.add("off");
                 playSingle(startBuffer);
                 aka.classList.add("off");
                 kin.classList.add("off");
@@ -632,6 +642,7 @@
                 lm = 1;
                 slide();
               } else if (E > 1 && E <= 4) {
+                goal.classList.add("off");
                 playSingle(startBuffer);
                 aka.classList.add("off");
                 kin.classList.remove("off");
@@ -646,6 +657,7 @@
                 lm = 1;
                 slide();
               } else if (E > 4 && E <= 7) {
+                goal.classList.add("off");
                 playSingle(startBuffer);
                 aka.classList.add("off");
                 kin.classList.remove("off");
@@ -668,6 +680,17 @@
                 cm = 1;
                 slide();
               } else if (E > 7 && E <= 13) {
+                goal_number = Math.floor(Math.random() * 4) + 1;
+                if (goal_number === 1) {
+                  goal.src = "sort28";
+                } else if (goal_number === 2) {
+                  goal.src = "sorttyeri";
+                } else if (goal_number === 3) {
+                  goal.src = "sortsuika";
+                } else if (goal_number === 4) {
+                  goal.src = "sortberu";
+                }
+                goal.classList.remove("off");
                 playSingle(tyuSBuffer);
                 aka.classList.remove("off");
                 kin.classList.add("off");
@@ -682,6 +705,7 @@
                 lm = 1;
                 slide();
               } else if (E > 13 && E <= 33) {
+                goal.classList.add("off");
                 playSingle(syoSBuffer);
                 aka.classList.add("off");
                 kin.classList.add("off");
@@ -695,6 +719,7 @@
                 lm = 0;
                 button += 1;
               } else {
+                goal.classList.add("off");
                 playSingle(startBuffer);
                 aka.classList.add("off");
                 kin.classList.add("off");
