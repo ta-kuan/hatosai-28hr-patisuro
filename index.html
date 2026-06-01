@@ -153,7 +153,6 @@
       }
       #parent_coin {
         position: absolute;
-        right: -1vw;
         width: 7vw;
         height: auto;
       }
@@ -394,6 +393,9 @@
         }
         A = newA;
       }
+      async function bonus() {
+        
+      }
       //スイカ1[3],２８2[1],７3,ベル4[4],bar5,チェリー6[2]
       async function check() {
         mati = 1;
@@ -523,6 +525,7 @@
               updateCoins(A + 1);
               await new Promise(resolve => setTimeout(resolve, time));
           }
+          if ((E > 7 && E <= 13) && ((goal_number === 1 && lr[0] === 2) || (goal_number === 2 && lr[0] === 6) || (goal_number === 3 && lr[0] === 1) || (goal_number === 4 && lr[0] === 4))) bonus();
         }
         if (lr[2] === cr[1] && cr[1] === rr[0] && lr[2] >= 1 && lr[2] <= 6) {
           playOverlap(nomalABuffer);
@@ -554,6 +557,7 @@
               updateCoins(A + 1);
               await new Promise(resolve => setTimeout(resolve, time));
           }
+          if ((E > 7 && E <= 13) && ((goal_number === 1 && lr[2] === 2) || (goal_number === 2 && lr[2] === 6) || (goal_number === 3 && lr[2] === 1) || (goal_number === 4 && lr[2] === 4))) bonus();
         }
         mati = 0;
       }
