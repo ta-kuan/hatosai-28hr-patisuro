@@ -299,6 +299,7 @@
     <script>
       const hideLoading = () => {
         document.querySelector(".loading")?.classList.add("off");
+        button = 0;
       };
       if (document.readyState === "complete") {
         hideLoading();
@@ -359,7 +360,7 @@
       let tyuSBuffer;
       let nomalABuffer;
       let singleSource = null;
-      let button = 0;
+      let button = -1;
       let E = Math.floor(Math.random() * 200) + 1;
       let kaku = 0;
       const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
