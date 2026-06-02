@@ -295,6 +295,16 @@
     </div>
     <div class="text off"></div>
     <img src="" class="goal off"></img>
+    <script>
+      const hideLoading = () => {
+        document.querySelector(".loading")?.classList.add("off");
+      };
+      if (document.readyState === "complete") {
+        hideLoading();
+      } else {
+        window.addEventListener("load", hideLoading, { once: true });
+      }
+    </script>
     <script type="module">
       const box = document.querySelector(".box");
       const l1 = document.querySelector(".l1");
@@ -948,10 +958,6 @@
         cm = 1;
         rm = 1;
         button = 0;
-      });
-      window.addEventListener("load", () => {
-        console.log("aa");
-        document.querySelector(".loading").classList.add("off");
       });
     </script>
   </body>
