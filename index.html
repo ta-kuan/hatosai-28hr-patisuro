@@ -334,6 +334,7 @@
       let E = Math.floor(Math.random() * 200) + 1;
       let kaku = 0;
       const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+      const sleep2 = (ms) => new Promise(resolve => setTimeout(resolve, ms));
       const srcs = ["srot7.png","srotberu.png","srotbar.png","srottyeri.png","srotsuika.png","srot28.png","srottyeri.png","srotbar.png","srot7.png","srotberu.png","srotsuika.png","srot28.png","srotsuika.png","srotberu.png","srot7.png","srotbar.png","srottyeri.png","srot28.png"];
       let mati = 0;
       let goal_number;
@@ -398,7 +399,7 @@
       async function bonus() {
         E = 0;
         bo = 1;
-        await sleep(10000);
+        await sleep2(10000);
         bo = 0;
       }
       function atari() {
