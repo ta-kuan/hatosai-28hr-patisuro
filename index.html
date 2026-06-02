@@ -297,10 +297,13 @@
     <div class="text off"></div>
     <img src="" class="goal off"></img>
     <script>
+      window.loadingFinished = false;
       const hideLoading = () => {
         document.querySelector(".loading")?.classList.add("off");
-        button = 0;
+        window.loadingFinished = true;
+        window.dispatchEvent(new Event("loadingFinished"));
       };
+
       if (document.readyState === "complete") {
         hideLoading();
       } else {
@@ -360,7 +363,12 @@
       let tyuSBuffer;
       let nomalABuffer;
       let singleSource = null;
-      var button = -1;
+      let button = window.loadingFinished ? 0 : -1;
+      window.addEventListener("loadingFinished", () => {
+        if (button === -1) {
+          button = 0;
+        }
+      });
       let E = Math.floor(Math.random() * 200) + 1;
       let kaku = 0;
       const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -959,7 +967,7 @@
         lm = 1;
         cm = 1;
         rm = 1;
-        button = 0;
+        button = window.loadingFinished ? 0 : -1;
       });
     </script>
   </body>
