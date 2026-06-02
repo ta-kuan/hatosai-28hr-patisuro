@@ -11,7 +11,7 @@
         font-family: "dot";
         src: url("Dot.ttf") format("truetype");
       }
-      #loading {
+      .loading {
         position: relative;
         margin: 0;
         padding: 0;
@@ -20,7 +20,7 @@
         height: 100vh;
         background: rgb(255,255,255);
       }
-      #loading::after {
+      .loading::after {
         content: "Loading...";
         position: absolute;
         left: 50%;
@@ -244,7 +244,7 @@
     </style>
   </head>
   <body>
-    <div id="loading"></div>
+    <div class="loading"></div>
     <div class="v">
       <video class="aka off" src="赤.mp4" loop></video>
       <video class="kin off" src="金.mp4" loop></video>
@@ -950,7 +950,7 @@
         button = 0;
       });
       window.addEventListener("load", () => {
-        document.getElementById("loading").classList.add("off");
+        document.querySelector(".loading").classList.add("off");
       });
     </script>
   </body>
