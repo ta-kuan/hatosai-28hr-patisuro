@@ -413,7 +413,7 @@
           for (let i = currentCount + 1; i <= newA; i++) {
             const original = document.getElementById('parent_coin');
             const clone = original.cloneNode(true);
-            const bottomValue = i * 1.2 + 9;
+            const bottomValue = i * 1.2 + 7;
             clone.style.bottom = `${bottomValue}vh`;
             clone.classList.remove("off");
             clone.classList.add("coin");
@@ -964,7 +964,6 @@
         console.log(B);
         updateCoins(B);
         coins_number.textContent = B;
-        coins_number.style.bottom = `${B * 1.2 + 7.5}vh`
         updateCoins(A - 1);
         updateCoins(A + 1);
         if (C === 0) {
