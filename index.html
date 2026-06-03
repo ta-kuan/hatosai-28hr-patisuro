@@ -452,7 +452,6 @@
         }
       }
       async function bonus() {
-        E = 0;
         button = -1;
         goal.classList.add("off");
         text.textContent = "５秒間回し放題！";
@@ -495,7 +494,7 @@
               updateCoins(A + 1);
               await new Promise(resolve => setTimeout(resolve, time));
           }
-          if ((E > 7 && E <= 13) && ((goal_number === 1 && lr[0] === 2) || (goal_number === 2 && lr[0] === 6) || (goal_number === 3 && lr[0] === 1) || (goal_number === 4 && lr[0] === 4))) bonus();
+          if (bo === 0 && (E > 7 && E <= 13) && ((goal_number === 1 && lr[0] === 2) || (goal_number === 2 && lr[0] === 6) || (goal_number === 3 && lr[0] === 1) || (goal_number === 4 && lr[0] === 4))) bonus();
         }
         if (lr[1] === cr[1] && cr[1] === rr[1] && lr[1] >= 1 && lr[1] <= 6) {
           playOverlap(nomalABuffer);
@@ -527,7 +526,7 @@
               updateCoins(A + 1);
               await new Promise(resolve => setTimeout(resolve, time));
           }
-          if ((E > 7 && E <= 13) && ((goal_number === 1 && lr[1] === 2) || (goal_number === 2 && lr[1] === 6) || (goal_number === 3 && lr[1] === 1) || (goal_number === 4 && lr[1] === 4))) bonus();
+          if (bo === 0 && (E > 7 && E <= 13) && ((goal_number === 1 && lr[1] === 2) || (goal_number === 2 && lr[1] === 6) || (goal_number === 3 && lr[1] === 1) || (goal_number === 4 && lr[1] === 4))) bonus();
         }
         if (lr[2] === cr[2] && cr[2] === rr[2] && lr[2] >= 1 && lr[2] <= 6) {
           playOverlap(nomalABuffer);
@@ -559,7 +558,7 @@
               updateCoins(A + 1);
               await new Promise(resolve => setTimeout(resolve, time));
           }
-          if ((E > 7 && E <= 13) && ((goal_number === 1 && lr[2] === 2) || (goal_number === 2 && lr[2] === 6) || (goal_number === 3 && lr[2] === 1) || (goal_number === 4 && lr[2] === 4))) bonus();
+          if (bo === 0 && (E > 7 && E <= 13) && ((goal_number === 1 && lr[2] === 2) || (goal_number === 2 && lr[2] === 6) || (goal_number === 3 && lr[2] === 1) || (goal_number === 4 && lr[2] === 4))) bonus();
         }
         if (lr[0] === cr[1] && cr[1] === rr[2] && lr[0] >= 1 && lr[0] <= 6) {
           playOverlap(nomalABuffer);
@@ -591,7 +590,7 @@
               updateCoins(A + 1);
               await new Promise(resolve => setTimeout(resolve, time));
           }
-          if ((E > 7 && E <= 13) && ((goal_number === 1 && lr[0] === 2) || (goal_number === 2 && lr[0] === 6) || (goal_number === 3 && lr[0] === 1) || (goal_number === 4 && lr[0] === 4))) bonus();
+          if (bo === 0 && (E > 7 && E <= 13) && ((goal_number === 1 && lr[0] === 2) || (goal_number === 2 && lr[0] === 6) || (goal_number === 3 && lr[0] === 1) || (goal_number === 4 && lr[0] === 4))) bonus();
         }
         if (lr[2] === cr[1] && cr[1] === rr[0] && lr[2] >= 1 && lr[2] <= 6) {
           playOverlap(nomalABuffer);
@@ -623,7 +622,7 @@
               updateCoins(A + 1);
               await new Promise(resolve => setTimeout(resolve, time));
           }
-          if ((E > 7 && E <= 13) && ((goal_number === 1 && lr[2] === 2) || (goal_number === 2 && lr[2] === 6) || (goal_number === 3 && lr[2] === 1) || (goal_number === 4 && lr[2] === 4))) bonus();
+          if (bo === 0 && (E > 7 && E <= 13) && ((goal_number === 1 && lr[2] === 2) || (goal_number === 2 && lr[2] === 6) || (goal_number === 3 && lr[2] === 1) || (goal_number === 4 && lr[2] === 4))) bonus();
         }
         mati = 0;
       }
