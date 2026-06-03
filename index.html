@@ -433,7 +433,25 @@
         }
         A = newA;
       }
+      async function slide() {
+        text.classList.remove("ani");
+        goal.classList.remove("ani");
+        await sleep(1000);
+        text.classList.add("ani");
+        goal.classList.add("ani");
+        await sleep(400);
+        if (E > 4 && E <= 7) {
+          lm = 1;
+        } else {
+          lm = 0;
+        }
+        button += 1;
+      }
       async function bonus() {
+        text.textContent = "５秒間回し放題！";
+        text.classList.remove("off");
+        lm = 1;
+        slide();
         bo = 1;
         await sleep(10000);
         bo = 0;
@@ -602,20 +620,6 @@
           if ((E > 7 && E <= 13) && ((goal_number === 1 && lr[2] === 2) || (goal_number === 2 && lr[2] === 6) || (goal_number === 3 && lr[2] === 1) || (goal_number === 4 && lr[2] === 4))) bonus();
         }
         mati = 0;
-      }
-      async function slide() {
-        text.classList.remove("ani");
-        goal.classList.remove("ani");
-        await sleep(1000);
-        text.classList.add("ani");
-        goal.classList.add("ani");
-        await sleep(400);
-        if (E > 4 && E <= 7) {
-          lm = 1;
-        } else {
-          lm = 0;
-        }
-        button += 1;
       }
       window.onkeydown = async (e) => {
         if (e.code === "Space" && mati === 0) {
@@ -946,6 +950,8 @@
       const id = params.get("id");
       if (!id) {
         throw new Error("no id");
+      } else {
+        document.title = "スロット - 28HR - 第" + id + "機";
       }
       // 自分のデータだけ監視
       let B = 0;
