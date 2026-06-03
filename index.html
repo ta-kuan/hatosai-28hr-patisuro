@@ -440,7 +440,7 @@
         text.classList.add("ani");
         goal.classList.add("ani");
         await sleep(400);
-        if (E > 4 && E <= 7) {
+        if ((E > 4 && E <= 13)) {
           lm = 1;
         } else {
           lm = 0;
@@ -448,9 +448,11 @@
         button += 1;
       }
       async function bonus() {
+        button = -1;
+        goal.classList.add("off");
         text.textContent = "５秒間回し放題！";
         text.classList.remove("off");
-        lm = 1;
+        button = 0;
         slide();
         bo = 1;
         await sleep(10000);
