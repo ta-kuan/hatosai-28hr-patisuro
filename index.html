@@ -180,6 +180,7 @@
         right: 1.6vw;
         font-size: 3.5vw;
         font-family: "dot";
+        bottom: 2.5vh;
       }
       .start {
         position: absolute;
@@ -412,15 +413,12 @@
           for (let i = currentCount + 1; i <= newA; i++) {
             const original = document.getElementById('parent_coin');
             const clone = original.cloneNode(true);
-            const bottomValue = i * 1.2 + 1;
+            const bottomValue = i * 1.2 + 3;
             clone.style.bottom = `${bottomValue}vh`;
             clone.classList.remove("off");
             clone.classList.add("coin");
             container.appendChild(clone);
-            if (i === newA) {
-              coins_number.textContent = newA;
-              coins_number.style.bottom = `${bottomValue + 7.5}vh`
-            }
+            if (i === newA) coins_number.textContent = newA;
           }
         } else if (newA < currentCount) {
           for (let i = currentCount; i > newA; i--) {
