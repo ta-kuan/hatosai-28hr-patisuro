@@ -963,6 +963,7 @@
       const messageRef = ref(db, "messages/" + id);
       onValue(messageRef, (snapshot) => {
         const B = snapshot.val() ?? 0;
+        B *= 4;
         console.log(B);
         updateCoins(B);
         coins_number.textContent = B;
