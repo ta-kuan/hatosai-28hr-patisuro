@@ -384,7 +384,7 @@
         return await audioCtx.decodeAudioData(arrayBuffer);
       }
       async function loadAllSounds() {
-        [stopBuffer,coinBuffer,startBuffer,syoSBuffer,tyuSBuffer,nomalABuffer] = await Promise.all([loadSound("srot_stop.mp3"),loadSound("coin.mp3"),loadSound("srot_start.mp3"),loadSound("小スタート.mp3"),loadSound("中スタート.mp3"),loadSound("通常当たり.mp3")]);
+        [stopBuffer,coinBuffer,startBuffer,syoSBuffer,tyuSBuffer,daiSBuffer,daidaiSBuffer,nomalABuffer] = await Promise.all([loadSound("srot_stop.mp3"),loadSound("coin.mp3"),loadSound("srot_start.mp3"),loadSound("小スタート.mp3"),loadSound("中スタート.mp3"),loadSound("大スタート.mp3"),loadSound("大大スタート.mp3"),loadSound("通常当たり.mp3")]);
       }
       loadAllSounds();
       function playOverlap(buffer) {
@@ -692,7 +692,7 @@
                 if (E !== 1) document.querySelectorAll(".box").forEach((box, index) => {box.src = srcs[index];});
                 if (E === 1) {
                   goal.classList.add("off");
-                  playSingle(startBuffer);
+                  playSingle(daidaiSBuffer);
                   aka.classList.add("off");
                   kin.classList.add("off");
                   nizi.classList.remove("off");
@@ -708,7 +708,7 @@
                   slide();
                 } else if (E > 1 && E <= 4) {
                   goal.classList.add("off");
-                  playSingle(startBuffer);
+                  playSingle(daiSBuffer);
                   aka.classList.add("off");
                   kin.classList.remove("off");
                   nizi.classList.add("off");
@@ -723,7 +723,7 @@
                   slide();
                 } else if (E > 4 && E <= 7) {
                   goal.classList.add("off");
-                  playSingle(startBuffer);
+                  playSingle(daiSBuffer);
                   aka.classList.add("off");
                   kin.classList.remove("off");
                   nizi.classList.add("off");
